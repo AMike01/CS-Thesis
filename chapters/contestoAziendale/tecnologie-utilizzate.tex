@@ -29,34 +29,26 @@ Questa libreria offre dei componenti predefiniti e pronti all’uso, che è poss
 \subsubsection{Axios}
 
 Una libreria \textit{JavaScript} che semplifica la comunicazione tra \gls{frontend} e \gls{backend}, consentendo di effettuare richieste \gls{http} (GET, POST, PUT, DELETE, ecc.) in modo efficiente e personalizzabile. \\
-\
-Offre supporto per \textit{Promises}, gestione avanzata degli errori e configurazioni flessibili per adattarsi a diverse esigenze.
+\gls{http} è un protocollo di comunicazione utilizzato per trasferire informazioni tra \textit{client} e \textit{server} su \textit{Internet}, basato sul concetto di richiesta dal \textit{client} e risposta del \textit{server}.
+\textit{Axios} offre supporto per \textit{Promises}, gestione avanzata degli errori e configurazioni flessibili per adattarsi a diverse esigenze in modo semplice.
 
 \subsubsection{Zod}
 
-Una libreria \textit{TypeScript} per la validazione ed il \textit{parsing} di dati, permette di definire degli schema per strutturare e convalidare oggetti, stringhe, \textit{array}, ecc.
+Una libreria \textit{TypeScript} per la validazione ed il \textit{parsing} di dati, permette di definire degli \textit{schema} per strutturare e convalidare oggetti, stringhe, \textit{array}, ecc. \\
 È possibile utilizzarla per effettuare validazioni dei dati in ingresso e in uscita dalle \gls{api}.
 \subsubsection{Styled Components}
 
-Una libreria che permette di scrivere stili CSS all’interno dei componenti \textit{React}, è possibile andare a creare stili personalizzati per ogni componente \textit{React}, andando a rendere il codice più leggibile e manutenibile.
-
-\begin{figure}[H]
-    \label{fig:styled-components}
-    \centering
-    \includegraphics[scale=0.25]{tecnologie/styled-component.png}
-    \caption{Esempio di utilizzo di \textit{Styled Components}}
-    \cite{site:medium}
-\end{figure}
+Una libreria che permette di scrivere stili \textit{CSS} all’interno dei componenti \textit{React}, è possibile andare a creare stili personalizzati per ogni componente \textit{React}, andando a rendere il codice più leggibile e manutenibile.
 
 \subsubsection{Vite}
 
-Uno strumento di sviluppo utilizzato per inizializzare e configurare rapidamente il \gls{frontend} di un progetto, semplificando l'inizializzazione e ottimizzando l'esperienza di sviluppo.\\
-È possibile utilizzarlo con vari \textit{framework} \gls{frontend} come ad esempio \textit{React}.
+Uno strumento di sviluppo utilizzato per configurare rapidamente il \gls{frontend} di un progetto, semplificando l'inizializzazione e ottimizzando l'esperienza di sviluppo.\\
+È possibile utilizzarlo con vari \textit{framework} \gls{frontend} come ad esempio \textit{React}, \textit{Angular}, \textit{Vue}, ecc.
 
 \subsubsection{React-PDF}
 
 Libreria utilizzata per il \textit{rendering} di documenti PDF all’interno di pagine create in \textit{React}.
-Consente di visualizzare, navigare ed interagire con i file PDF.
+Consente di visualizzare, navigare ed interagire con i \textit{file} PDF.
 
 \subsubsection{Node.js}
 
@@ -67,12 +59,13 @@ Consente di sviluppare applicazioni scalabili e ad alte prestazioni, grazie al m
 
 Un \textit{framework} \gls{backend} moderno e robusto basato su \textit{Node.js}, progettato per creare applicazioni \textit{server} scalabili ed efficienti.
 Ideale per costruire \textit{API RESTful, GraphQL} e applicazioni in tempo reale, grazie al supporto nativo per \textit{middleware}, guardie, filtri e \textit{interceptor}.
-\pagebreak
+
 \subsubsection{MongoDB}
 
 Un \textit{database NoSQL} potente e flessibile progettato per la gestione di dati sotto forma di documenti \textit{JSON-like}. 
-È ideale per applicazioni moderne grazie alla sua scalabilità orizzontale, alla capacità di gestire grandi volumi di dati non strutturati e alla facilità di integrazione con diverse tecnologie.
-
+È ideale per applicazioni moderne grazie alla sua scalabilità orizzontale, alla capacità di gestire grandi volumi di dati non strutturati e alla facilità di integrazione con diverse tecnologie. \\
+Nella {\hyperref[fig:sql-nosql]{Figura 1.5}} è possibile vedere le principali differenze tra un \textit{database SQL} e un \textit{database NoSQL}, come ad esempio la diversa strutturazione dei dati
+e i casi d'uso tipici per ciascuna tipologia.
 \begin{figure}[H]
     \label{fig:sql-nosql}
     \centering
@@ -82,18 +75,19 @@ Un \textit{database NoSQL} potente e flessibile progettato per la gestione di da
 
 \subsubsection{Mongoose}
 
-Un \gls{odm} per \textit{Node.js}, utilizzato per semplificare il collegamento tra \textit{NestJS} e \textit{MongoDB}. Consente di definire schemi per i dati, applicare validazioni, \textit{middleware} e trasformazioni direttamente a livello di modello. \\
-\textit{Mongoose} offre un'API intuitiva per interagire con \textit{MongoDB}, supportando operazioni complesse come popolamenti, \textit{query} avanzate e gestione delle relazioni tra documenti. 
+Un \gls{odm} per \textit{Node.js}, utilizzato per semplificare il collegamento tra \textit{NestJS} e \textit{MongoDB}. Consente di definire \textit{schema} per i dati, applicare validazioni, \textit{middleware} e trasformazioni direttamente a livello di modello. \\
+\textit{Mongoose} offre delle \gls{api} intuitive per interagire con \textit{MongoDB}, supportando operazioni complesse come popolamenti, \textit{query} avanzate e gestione delle relazioni tra documenti. 
 
 \subsubsection{LangChain}
 
 Un \textit{framework} avanzato per lo sviluppo di applicazioni che utilizzano \gls{llm}. 
-\textit{LangChain} semplifica la gestione delle chiamate \gls{api} ai modelli di linguaggio, offrendo strumenti per orchestrare flussi complessi, integrare memoria e combinare più modelli o fonti di dati.
-
+\textit{LangChain} semplifica la gestione delle chiamate \gls{api} ai modelli di linguaggio, offrendo strumenti per orchestrare flussi complessi, integrare memoria e combinare più modelli o fonti di dati.\\
+\textit{LangChain} ha diverse funzionalità, visibili in {\hyperref[fig:langchain-usecases]{Figura 1.6}}, queste includono ad esempio la possibilità di effettuare \gls{prompt-engineering}, una branca dell'\gls{ai} che si occupa di creare \textit{prompt} ottimizzati per ottenere risposte di qualità dai modelli di linguaggio.\\
+Un'altra funzionalità disponibile, ma che non è stata applicata al progetto, è l'utilizzo di \gls{rag}, che permette di creare risposte più complesse e strutturate rispetto ai modelli di linguaggio tradizionali.\\
 \begin{figure}[H]
     \label{fig:langchain-usecases}
     \centering
-    \includegraphics[scale=0.2]{tecnologie/langchain.png}
+    \includegraphics[scale=0.19]{tecnologie/langchain.png}
     \caption{Pricipali funzionalità di \textit{LangChain}}
 \end{figure}
 \subsubsection{Puppeteer}
@@ -103,21 +97,21 @@ Un \textit{framework} avanzato per lo sviluppo di applicazioni che utilizzano \g
 
 \subsubsection{HandleBars}
 
-\textit{Handlebars} è una libreria \textit{JavaScript} per creare e popolare template \textit{HTML} con dati dinamici. 
-Consente di separare la logica di presentazione dai dati, supportando espressioni condizionali, \textit{loop} e \textit{helper} personalizzati.
+\textit{Handlebars} è una libreria \textit{JavaScript} per creare e popolare \textit{template} \textit{HTML} con dati dinamici. 
+Consente di separare la logica di presentazione dai dati, supportando espressioni condizionali, \textit{loop} ed \textit{helper} personalizzati.
 
 \subsubsection{Servizi \gls{aws}}
 
 \begin{itemize}
 \item \textbf{AWS Amplify:} Una piattaforma completa per sviluppare applicazioni \textit{web} e \textit{mobile} con servizi \textit{cloud}. 
-Fornisce strumenti per autenticazione, \gls{api}, storage e hosting, semplificando l'integrazione con servizi \gls{aws};
+Fornisce strumenti per autenticazione, \gls{api}, \textit{storage} ed \textit{hosting}, semplificando l'integrazione con servizi \gls{aws};
 \item \textbf{AWS Cognito:} Un servizio di gestione delle identità che consente agli sviluppatori di aggiungere facilmente funzionalità di autenticazione, registrazione e accesso federato alle proprie applicazioni,
-utilizzato inoltre per la generazione di \gls{jwt};
-\item \textbf{AWS Bedrock:} Un servizio di intelligenza artificiale generativa offerto da \gls{aws} che consente agli sviluppatori di integrare modelli avanzati di \gls{ai} generativa nelle proprie applicazioni, senza necessità di competenze specifiche in \gls{machine-learning}. 
+utilizzato inoltre per la generazione di \gls{jwt}, dei \textit{token} di autenticazione che vengono utilizzati per verificare l'identità degli utenti, ampiamente utilizzati in ambito \textit{web};
+\item \textbf{AWS Bedrock:} Un servizio di \gls{ai} generativa offerto da \gls{aws} che consente agli sviluppatori di integrare modelli avanzati nelle proprie applicazioni, senza necessità di competenze specifiche in \gls{machine-learning}. 
 \textit{AWS Bedrock} supporta modelli pre-addestrati da fornitori \textit{leader} e offre funzionalità per creare, personalizzare e implementare soluzioni \gls{ai} scalabili, ideali per \textit{chatbot}, creazione di contenuti, analisi dei dati e altro;
 \item \textbf{AWS S3 (Simple Storage Service):} Un servizio di archiviazione \textit{cloud} offerto da \gls{aws} progettato per il salvataggio di oggetti con scalabilità, disponibilità e sicurezza elevate.
 Supporta la memorizzazione e il recupero di qualsiasi quantità di dati, con funzionalità avanzate come versionamento, controllo degli accessi e integrazione con altri servizi \gls{aws}. \\
-Nel progetto specifico, \textit{AWS S3} viene utilizzato per archiviare file PDF generati dinamicamente, garantendo un accesso rapido e affidabile.
+Nel progetto specifico, \textit{AWS S3} viene utilizzato per archiviare \textit{file} PDF generati dinamicamente, garantendo un accesso rapido e affidabile.
 \end{itemize}
 
 \pagebreak
@@ -137,7 +131,9 @@ I \gls{container} permettono l’isolazione delle applicazioni e delle loro dipe
 \subsubsection{Postman}
 
 Strumento che permette di testare in modo semplice le \gls{api}. 
-Consente di inviare richieste \gls{http} ed analizzare le risposte andando a semplificare lo sviluppo ed il \textit{debugging} delle \gls{api}.
+Consente di inviare richieste \gls{http} ed analizzare le risposte andando a semplificare lo sviluppo ed il \textit{debugging} delle \gls{api}. \\
+In {\hyperref[fig:postman]{Figura 1.7}} è possibile vedere un esempio di utilizzo di \textit{Postman} per effettuare una chiamata all'\gls{api} per
+la generazione di un progetto, completa dei parametri necessari.
 
 \begin{figure}[H]
     \label{fig:postman}
@@ -149,18 +145,20 @@ Consente di inviare richieste \gls{http} ed analizzare le risposte andando a sem
 \subsubsection{StarUML}
 
 Uno strumento avanzato per la modellazione di \gls{uml}, utilizzato per creare e gestire diagrammi di progettazione software. Supporta un'ampia gamma di diagrammi \gls{uml}, tra cui casi d'uso, sequenza e attività, semplificando la visualizzazione di architetture e flussi.
-È stato utilizzato per creare i diagrammi dei casi d’uso del progetto.
+I diagrammi \gls{uml} sono utili per rappresentare in modo chiaro e conciso le relazioni tra i componenti di un sistema, facilitando la comprensione e la comunicazione tra gli sviluppatori.
+\textit{StarUML} è stato utilizzato per creare i diagrammi dei casi d’uso del progetto.
 
+\pagebreak
 \subsubsection{git}
 
 Un sistema di controllo di versione distribuito, progettato per tracciare le modifiche al codice sorgente e facilitare la collaborazione tra sviluppatori. \\
 Permette di gestire versioni, ramificare progetti e integrare modifiche in modo efficiente e sicuro. 
 
-\pagebreak
 \subsubsection{MongoDB Compass}
 
 Un'interfaccia grafica intuitiva per interagire con \textit{database MongoDB}, che consente di esplorare e modificare i dati, visualizzare indici e \textit{query},
 e semplificare la gestione e l'analisi del \textit{database.}
+Nella {\hyperref[fig:mongodb-compass]{Figura 1.8}} è possibile vedere un esempio di utilizzo di \textit{MongoDB Compass} per visualizzare un documento all'interno di una collezione.
 
 \begin{figure}[H]
     \label{fig:mongodb-compass}
