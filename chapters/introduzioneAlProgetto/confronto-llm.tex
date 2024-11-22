@@ -1,0 +1,131 @@
+\subsection{Confronto tra principali LLM}
+\label{subsec:llm-confronto}
+
+Di seguito è presente un confronto tra i principali \gls{llm} attualmente disponibili sul mercato\footcite{site:key-differences-llm}, con l'obiettivo di evidenziare le loro differenze, i casi d'uso principali, i loro punti di forza ed i limiti di ciascun modello.\\
+Questi modelli sono accessibili tramite \textit{AWS Bedrock}\footcite{site:aws-bedrock}, ad eccezione di \textit{GPT-4}, incluso comunque nel confronto per la sua rilevanza e diffusione.
+
+\subsubsection{\textit{GPT-4 (OpenAI)}}
+
+\noindent \textbf{Descrizione:}
+\textit{GPT-4} è un modello all’avanguardia progettato per risolvere compiti complessi grazie alla sua elevata capacità di comprensione e generazione del linguaggio. \\
+Anche se non disponibile tramite \textit{AWS Bedrock}, è una delle soluzioni più utilizzate per la sua accuratezza e versatilità.\\
+
+\noindent \textbf{Casi d’uso:}
+\begin{itemize}
+   \item \textbf{Generazione tecnica:} Creazione di documentazione tecnica dettagliata;
+   \item \textbf{Analisi avanzata:} Interpretazione di dati e contenuti complessi;
+   \item \textbf{Supporto per sviluppatori:} \textit{Debugging} e generazione di codice ottimizzato;
+   \item \textbf{Ricerca scientifica:} Sintesi e analisi di paper scientifici.
+\end{itemize}
+
+\noindent \textbf{Punti di forza:}
+\begin{itemize}
+    \item \textbf{Capacità di contesto estesa:} Supporta fino a 32k \gls{token}, adatto per documenti complessi;
+    \item \textbf{Versatilità multi-task:} Funziona bene su domande aperte e contesti tecnici specifici;
+    \item \textbf{\textit{Fine-tuning} implicito:} Non necessita di \textit{tuning} per molti casi d’uso, grazie ad un addestramento generale molto efficace.
+\end{itemize}
+
+\noindent \textbf{Limiti:}
+\begin{itemize}
+    \item \textbf{Costo elevato:} Il prezzo per \gls{token} è più alto rispetto ad altre opzioni;
+    \item \textbf{Latenza:} \textit{Input} complessi possono rallentare il tempo di risposta.
+    \item \textbf{Non nativo per AWS Bedrock:} Necessita di integrazione tramite \gls{api} \textit{OpenAI}.
+\end{itemize}
+
+\subsubsection{\textit{Claude 3.5 (Anthropic)}}
+
+\noindent \textbf{Descrizione:}
+\textit{Claude 3.5 Sonnet} è ottimizzato per la gestione di contesti estesi e la generazione di risposte sicure e trasparenti. \\\
+Su \textit{AWS Bedrock}, è utilizzato per applicazioni con grandi volumi di testo e analisi linguistiche. \\
+
+\noindent \textbf{Casi d’uso:}
+\begin{itemize}
+    \item \textbf{Analisi documentale:} Generazione e sintesi di documenti di grandi dimensioni (fino a 100k \gls{token});
+    \item \textbf{Automazione HR e legale:} Risposte standardizzate e conformità normativa;
+    \item \textbf{Interfacce conversazionali:} \textit{Chatbot} sicuri per il supporto clienti e interno.
+\end{itemize}
+
+\noindent \textbf{Punti di forza:}
+\begin{itemize}
+    \item \textbf{Capacità di contesto estesa:} Supporta \textit{input} fino a 100k \gls{token}, ideale per documenti lunghi;
+    \item \textbf{Bias ridotto:} Allenato per minimizzare risposte non sicure o inappropriate;
+    \item \textbf{Costi contenuti:} Efficiente rapporto costo-token.
+\end{itemize}
+
+\noindent \textbf{Limiti:}
+\begin{itemize}
+    \item \textbf{Latenza:} \textit{Input} complessi possono rallentare il tempo di risposta;
+    \item \textbf{Risposte conservative:} Tende a evitare \textit{output} creativi o fuori dall’ordinario.
+    \item \textbf{Limitato per codice:} Meno supporto per generazione di codice avanzato.
+\end{itemize}
+
+\subsubsection{\textit{Amazon Titan}}
+
+\noindent \textbf{Descrizione:}
+\textit{Titan} è il modello di intelligenza artificiale sviluppato da \textit{Amazon}, ottimizzato per l’integrazione nativa con \textit{AWS Bedrock} e altre soluzioni AWS (AGGIUNGERE GLOSSARIO).
+Si concentra su casi d’uso aziendali pratici e robusti.\\
+
+\noindent \textbf{Casi d’uso:}
+\begin{itemize}
+    \item \textbf{Elaborazione dati strutturati:} Supporto per analisi di report aziendali e database;
+    \item \textbf{Chatbot aziendali:} Personalizzabili per specifici settori industriali;
+    \item \textbf{Supporto operativo:} Automazione di flussi di lavoro e riepiloghi aziendali.
+\end{itemize}
+
+\noindent \textbf{Punti di forza:}
+\begin{itemize}
+    \item \textbf{Integrazione nativa con AWS:} Compatibilità totale con strumenti \textit{AWS} come \textit{DynamoDB} e \textit{S3};
+    \item \textbf{Ottimizzazione della sicurezza:} Protezione dei dati aziendali con politiche \textit{AWS} rigorose;
+    \item \textbf{Efficienza nei costi:} Disegnato per fornire prestazioni elevate con \textit{budget} contenuti.
+\end{itemize}
+
+\noindent \textbf{Limiti:}
+\begin{itemize}
+    \item \textbf{Capacità di linguaggio generico inferiore:} Non raggiunge la qualità linguistica di \textit{GPT-4} o \textit{Claude 3.5};
+    \item \textbf{Meno innovativo:} Adatto a compiti definiti, non eccelle in creatività o flessibilità;
+    \item \textbf{Limitata flessibilità:} Richiede configurazioni specifiche per settori diversi.
+\end{itemize}
+
+\subsubsection{\textit{Llama (Meta)}}
+
+\noindent \textbf{Descrizione:}
+\textit{Llama} è un modello \textit{open-source} progettato per essere altamente personalizzabile, ideale per casi in cui è richiesto un controllo completo sul \textit{fine-tuning}. 
+Su \textit{AWS Bedrock}, è particolarmente utile per applicazioni che richiedono soluzioni specifiche per il dominio applicativo.\\
+
+\noindent \textbf{Casi d’uso:}
+\begin{itemize}
+    \item \textbf{Addestramento personalizzato:} Modelli ottimizzati per domini ristretti come finanza o medicina;
+    \item \textbf{Soluzioni locali:} Applicazioni in ambienti chiusi per garantire massima \textit{privacy};
+    \item \textbf{Sperimentazione:} Perfetto per ricerca accademica e/o sviluppo di prototipi.
+\end{itemize}
+
+\noindent \textbf{Punti di forza:}
+\begin{itemize}
+    \item \textbf{\textit{Open-source}:} Offre pieno controllo per modifiche e ottimizzazioni;
+    \item \textbf{Scalabilità flessibile:} Può essere ridimensionato per applicazioni \textit{on-premises} o \textit{cloud}.
+\end{itemize}
+
+\noindent \textbf{Limiti:}
+\begin{itemize}
+    \item \textbf{Richiede competenze tecniche avanzate:} Il \textit{tuning} e l’implementazione necessitano di risorse specializzate;
+    \item \textbf{Prestazioni inferiori senza \textit{tuning}:} Il modello base è meno performante rispetto a \textit{GPT-4} o \textit{Claude};
+    \item \textbf{Ambiente di sviluppo più complesso:} Meno pronto all’uso rispetto ai modelli pre-addestrati.
+\end{itemize}
+
+\begin{table}%
+    \label{tab:confronto-lllm}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|}
+    \hline
+    \textbf{Modello} & \textbf{Casi d'uso} & \textbf{Punti di forza} & \textbf{Limiti}\\
+    \hline
+    \textit{GPT-4} & Automazione avanzata, analisi tecnica & Supporta 32k \gls{token}, versatile e accurato & Costoso, non nativo su \textit{AWS Bedrock}   \\
+    \hline
+    \textit{Claude 3.5} & Generazione documenti lunghi, chatbot sicuri & Contesto ampio, sicurezza nei dati & Risposte conservative, latenza elevata \\
+    \hline
+    \textit{Amazon Titan} & Report aziendali, automazione & Integrazione nativa \textit{AWS}, costi ridotti & Meno versatile, output linguistico generico \\
+    \hline
+    \textit{Llama} & Addestramento personalizzato & \textit{Open-source}, flessibilità & Prestazioni limitate senza modifiche avanzate \\
+    \hline
+    \end{tabularx}
+    \caption{Tabella confronto riassuntivo \gls{llm}}
+    \end{table}%
