@@ -169,7 +169,7 @@ Inoltre, i \textit{database NoSQL} sono progettati per supportare operazioni di 
 il che significa che è più facile distribuire i dati su più \textit{server} per gestire l'aumento delle richieste senza compromettere le prestazioni.\\
 Questo li rende particolarmente adatti per applicazioni \textit{web moderne} e scenari di microservizi.\\
 
-\noindent Nella {\hyperref[fig:sql-nosql]{Figura 1.5}} è possibile vedere uno schema che mostra la differenza di struttura dei dati tra un \textit{database SQL} e un \textit{database NoSQL}.
+\noindent Nella {\hyperref[fig:sql-nosql]{Figura 1.6}} è possibile vedere uno schema che mostra la differenza di struttura dei dati tra un \textit{database SQL} e un \textit{database NoSQL}.
 
 \begin{figure}[H]
     \label{fig:sql-nosql}
@@ -192,7 +192,7 @@ Questo permette agli sviluppatori di definire strutture dati robuste, convalidar
 
 \subsubsection{Puppeteer}
 
-\textit{Puppeteer} è una libreria \textit{Node.js} che fornisce un'interfaccia di alto livello per controllare un \textit{browser} \gls{Chromium} in modalità \textit{headless}, cioè senza interfaccia grafica, per automatizzare attività come il rendering di pagine \textit{web} e la generazione di \textit{file} PDF.\\
+\textit{Puppeteer} è una libreria \textit{Node.js} che fornisce un'interfaccia di alto livello per controllare un \textit{browser} \gls{chromium} in modalità \textit{headless}, cioè senza interfaccia grafica, per automatizzare attività come il rendering di pagine \textit{web} e la generazione di \textit{file} PDF.\\
 \textit{Chromium} è un \textit{browser open-source} sviluppato da \textit{Google}, che funge da base per browser come \textit{Google Chrome, Microsft Edge, ecc.}.\\
 
 \noindent Grazie a \textit{Puppeteer}, è possibile interagire programmaticamente con \textit{Chromium}, simulando l'esecuzione di \textit{script}, il caricamento di contenuti dinamici, l'interazione con il \textit{DOM}, e la creazione di documenti.\\
@@ -213,31 +213,80 @@ Questo approccio consente di ottenere documenti PDF coerenti e ben strutturati, 
 
 \subsubsection{LangChain}
 
-Un \textit{framework} avanzato per lo sviluppo di applicazioni che utilizzano \gls{llm}. 
-\textit{LangChain} semplifica la gestione delle chiamate \gls{api} ai modelli di linguaggio, offrendo strumenti per orchestrare flussi complessi, integrare memoria e combinare più modelli o fonti di dati.\\
-\textit{LangChain} ha diverse funzionalità, visibili in {\hyperref[fig:langchain-usecases]{Figura 1.6}}, queste includono ad esempio la possibilità di effettuare \gls{prompt-engineering}, una branca dell'\gls{ai} che si occupa di creare \textit{prompt} ottimizzati per ottenere risposte di qualità dai modelli di linguaggio.\\
-Un'altra funzionalità disponibile, ma che non è stata applicata al progetto, è l'utilizzo di \gls{rag}, che permette di creare risposte più complesse e strutturate rispetto ai modelli di linguaggio tradizionali,
-grazie ad una base di conoscenza autorevole al di fuori delle sue fonti di dati di addestramento.\\
+\textit{LangChain} è un \textit{framework} avanzato progettato per facilitare lo sviluppo di applicazioni che sfruttano i \gls{llm}. \\
+Gli \gls{llm} sono modelli di intelligenza artificiale addestrati su grandi quantità di dati testuali per comprendere e generare linguaggio naturale. \\
+Grazie alla loro dimensione e complessità, possono eseguire compiti come traduzione, riassunti, completamento di frasi, e risposte a domande in modo altamente sofisticato.\\
+Per una spiegazione più dettagliata sugli \gls{llm} si rimanda alla {\hyperref[sez:llm]{sezione §2.3}}.\\
+
+\noindent \textit{LangChain} semplifica l'interazione con modelli di linguaggio come quelli offerti da \gls{aws} \textit{Bedrock}, fornendo strumenti per gestire chiamate \gls{api}, orchestrare flussi di lavoro complessi, integrare memoria e combinare più modelli o fonti di dati in modo efficiente.\\
+Nel progetto, ho utilizzato \textit{LangChain} insieme ad \gls{aws} \textit{Bedrock} per generare piani progettuali dettagliati. \\
+Grazie alle sue capacità di orchestrazione, \textit{LangChain} ha permesso di ottimizzare i flussi di interazione tra i modelli di linguaggio e i dati, garantendo una gestione fluida delle richieste e delle risposte.\\
+
+\noindent \textit{LangChain} include funzionalità avanzate come il \gls{prompt-engineering}, una disciplina dell'\gls{ai} che si occupa di progettare \textit{prompt} ottimizzati per ottenere risposte precise e di alta qualità dai modelli di linguaggio.\\
+Il \gls{prompt-engineering} consiste nel definire accuratamente la struttura e il contenuto del \textit{prompt}, fornendo al modello un contesto chiaro e specifico per migliorare la pertinenza delle risposte.\\
+Questa tecnica è fondamentale per massimizzare l’efficacia dei \textit{prompt} e personalizzare i risultati in base alle esigenze applicative, rendendo l’interazione con i modelli più mirata ed efficiente.\\
+
+\noindent Un'altra funzionalità avanzata di \textit{LangChain} è la \gls{rag}. \\
+Questa tecnica consente di migliorare le risposte dei modelli di linguaggio integrandole con una base di conoscenza esterna autorevole, al di fuori delle fonti di dati su cui i modelli sono stati addestrati.\\
+La \gls{rag} permette di generare risposte più complesse e dettagliate, utilizzando documenti o \textit{database} specifici per il problema di riferimento.\\
+Sebbene questa funzionalità non sia stata applicata direttamente nel progetto, rappresenta un'opzione potente per scenari che richiedono risposte altamente personalizzate e affidabili.\\
+\textit{LangChain}, combinato con \gls{aws} \textit{Bedrock}, rappresenta quindi uno strumento versatile per creare applicazioni scalabili, sfruttando appieno le potenzialità degli \gls{llm} avanzati.
+
+\noindent Nella {\hyperref[fig:langchain-usecases]{Figura 1.7}} è possibile vedere le principali funzionalità di \textit{LangChain}.
+
+
 \begin{figure}[H]
     \label{fig:langchain-usecases}
     \centering
-    \includegraphics[scale=0.19]{tecnologie/langchain.png}
+    \includegraphics[scale=0.3]{tecnologie/langchain.png}
     \caption{Pricipali funzionalità di \textit{LangChain}}
+    \cite{site:key-features-langchain}
 \end{figure}
 
-\subsubsection{Servizi \gls{aws}}
+\subsubsection{AWS Amplify}
 
+Una piattaforma completa per lo sviluppo di applicazioni \textit{web} e \textit{mobile} integrata con servizi \textit{cloud}.
+\textit{AWS Amplify} fornisce strumenti per semplificare l’autenticazione degli utenti, la gestione delle \gls{api}, lo \textit{storage} di dati e l'\textit{hosting} delle applicazioni.\\
+
+\noindent Consente agli sviluppatori di connettersi rapidamente con altri servizi \gls{aws}, supportando la creazione di applicazioni scalabili e moderne grazie a funzionalità come il monitoraggio in tempo reale, 
+l’integrazione con \textit{framework} popolari ed il supporto per implementazioni \gls{ci/cd}.\\
+
+\noindent \gls{ci/cd} sono pratiche di sviluppo \textit{software} che automatizzano l'integrazione continua del codice e il suo rilascio frequente. \\
+Questi processi garantiscono maggiore efficienza, affidabilità e velocità nel ciclo di sviluppo.
+
+\subsubsection{AWS Cognito}
+
+Un servizio di gestione delle identità progettato per aggiungere funzionalità di autenticazione, registrazione e accesso federato alle applicazioni.\\
+\textit{AWS Cognito} facilita la gestione degli utenti, offrendo opzioni di autenticazione tramite \gls{jwt}.\\
+
+\noindent I \gls{jwt} sono \textit{token} standard utilizzati per trasferire in modo sicuro informazioni tra un \textit{client} ed un \textit{server}.\\
+Essi contengono dati codificati (come l'identità dell'utente) e sono firmati digitalmente per garantire l'integrità e la sicurezza dei dati trasmessi.\\
+\pagebreak
+Questi \textit{token} sono ideali per applicazioni \textit{web} moderne, poiché consentono una comunicazione senza necessità di sessioni persistenti sul \textit{server}, migliorando le prestazioni e la scalabilità.
+
+\subsubsection{AWS Bedrock}
+
+Un servizio di \gls{generative-ai} che permette agli sviluppatori di integrare modelli avanzati nelle proprie applicazioni senza dover possedere competenze specifiche in \gls{machine-learning}.\\
+
+\noindent Il \gls{machine-learning} è una branca dell’intelligenza artificiale che si basa su algoritmi capaci di apprendere dai dati ed effettuare previsioni o prendere decisioni senza essere esplicitamente programmati.\\ 
+La \gls{generative-ai}, invece, rappresenta una sottocategoria dell’intelligenza artificiale focalizzata sulla creazione di contenuti nuovi e originali, come testo, immagini, musica o codice,
+basandosi su modelli pre-addestrati in grado di comprendere e replicare schemi presenti nei dati di addestramento.\\
+
+\noindent Con \gls{aws} \textit{Bedrock}, gli sviluppatori possono sfruttare modelli pre-addestrati forniti da aziende leader del settore, con possibilità di personalizzazione per adattarli ai propri casi d’uso specifici.\\
+Questo servizio è ideale per sviluppare soluzioni innovative come \textit{chatbot} avanzati, generazione di contenuti personalizzati, analisi approfondite di grandi volumi di dati e integrazione di funzionalità \gls{ai} scalabili nelle applicazioni.\\ 
+
+\subsubsection{AWS S3 (Simple Storage Service)}
+
+Un servizio di archiviazione \textit{cloud} progettato per memorizzare oggetti di qualsiasi dimensione con elevata scalabilità, disponibilità e sicurezza.\\
+\textit{AWS S3} supporta il salvataggio di dati in forma di oggetti (\textit{blob}) organizzati in \textit{bucket}. È ideale per l’archiviazione e il recupero di file come immagini, video, documenti e \textit{backup}.\\
+
+\noindent Include funzionalità avanzate come:
 \begin{itemize}
-\item \textbf{\textit{AWS Amplify:}} Una piattaforma completa per sviluppare applicazioni \textit{web} e \textit{mobile} con servizi \textit{cloud}. 
-Fornisce strumenti per autenticazione, \gls{api}, \textit{storage} ed \textit{hosting}, semplificando l'integrazione con servizi \gls{aws};
-\item \textbf{\textit{AWS Cognito:}} Un servizio di gestione delle identità che consente agli sviluppatori di aggiungere facilmente funzionalità di autenticazione, registrazione e accesso federato alle proprie applicazioni,
-utilizzato inoltre per la generazione di \gls{jwt}, dei \textit{token} di autenticazione che vengono utilizzati per verificare l'identità degli utenti, ampiamente utilizzati in ambito \textit{web};
-\item \textbf{\textit{AWS Bedrock:}} Un servizio di \gls{ai} generativa offerto da \gls{aws} che consente agli sviluppatori di integrare modelli avanzati nelle proprie applicazioni, senza necessità di competenze specifiche in \gls{machine-learning}.\\ 
-\textit{AWS Bedrock} supporta modelli pre-addestrati da fornitori \textit{leader} e offre funzionalità per creare, personalizzare e implementare soluzioni \gls{ai} scalabili, ideali per \textit{chatbot}, creazione di contenuti, analisi dei dati, ecc.;
-\item \textbf{\textit{AWS S3 (Simple Storage Service):}} Un servizio di archiviazione \textit{cloud} offerto da \gls{aws} progettato per il salvataggio di oggetti con scalabilità, disponibilità e sicurezza elevate.
-Supporta la memorizzazione ed il recupero di qualsiasi quantità di dati, con funzionalità avanzate come versionamento, controllo degli accessi e integrazione con altri servizi \gls{aws}. \\
-Nel progetto specifico, \textit{AWS S3} viene utilizzato per archiviare \textit{file} PDF generati dinamicamente, garantendone l'accesso rapido e affidabile.
+    \item \textbf{Versionamento:} permette di gestire più versioni dello stesso \textit{file}, mantenendo traccia delle modifiche e consentendo di ripristinare versioni precedenti se necessario;
+    \item \textbf{Controllo degli accessi:} per proteggere i dati e regolarne l'accesso tramite politiche di sicurezza granulari;
+    \item \textbf{Integrazione con altri servizi \gls{aws}:} per analisi, distribuzione di contenuti o \gls{machine-learning}.
 \end{itemize}
 
-
-
+\noindent Nel progetto specifico, \textit{AWS S3} è stato utilizzato per archiviare in modo sicuro i \textit{file} PDF generati dinamicamente.\\
+Grazie alla funzionalità di versionamento di \textit{AWS S3}, ogni volta che un documento viene aggiornato o rigenerato, una nuova versione del \textit{file} viene automaticamente salvata, mantenendo le versioni precedenti accessibili.\\
+Questo processo garantisce che le modifiche ai documenti siano tracciate e che si possieda una storicità completa dei \textit{file}, permettendo di ripristinare versioni precedenti in caso di necessità, il tutto senza compromettere l'affidabilità o la sicurezza dei dati.
