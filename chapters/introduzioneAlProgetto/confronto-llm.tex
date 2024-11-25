@@ -115,19 +115,22 @@ Su \textit{AWS Bedrock}, è particolarmente utile per applicazioni che richiedon
 \end{itemize}
 
 \begin{table}[H]
-    \label{tab:confronto-lllm}
-    \begin{tabularx}{\textwidth}{|X|X|X|X|}
-    \hline
-    \textbf{Modello} & \textbf{Casi d'uso} & \textbf{Punti di forza} & \textbf{Limiti}\\
-    \hline
-    \textit{GPT-4} & Automazione avanzata, analisi tecnica & Supporta 32k \gls{token}, versatile e accurato & Costoso, non nativo su \textit{AWS Bedrock}   \\
-    \hline
-    \textit{Claude 3.5} & Generazione documenti lunghi, chatbot sicuri & Contesto ampio, sicurezza nei dati & Risposte conservative, latenza elevata \\
-    \hline
-    \textit{Amazon Titan} & Report aziendali, automazione & Integrazione nativa \textit{AWS}, costi ridotti & Meno versatile, output linguistico generico \\
-    \hline
-    \textit{Llama} & Addestramento personalizzato & \textit{Open-source}, flessibilità & Prestazioni limitate senza modifiche avanzate \\
-    \hline
+    \centering
+    \rowcolors{2}{gray!15}{white} % Righe alternate: grigio chiaro e bianco
+    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \rowcolor{green!30} % Colore dell'intestazione: verde chiaro
+        \textbf{Modello} & \textbf{Casi d'uso} & \textbf{Punti di forza} & \textbf{Limiti} \\
+        \hline
+        \textit{GPT-4} & Automazione avanzata, analisi tecnica & Supporta 32k \textit{token}, versatile e accurato & Costoso, non nativo su \textit{AWS Bedrock} \\
+        \hline
+        \textit{Claude 3.5} & Generazione documenti lunghi, chatbot sicuri & Contesto ampio, sicurezza nei dati & Risposte conservative, latenza elevata \\
+        \hline
+        \textit{Amazon Titan} & Report aziendali, automazione & Integrazione nativa \textit{AWS}, costi ridotti & Meno versatile, output linguistico generico \\
+        \hline
+        \textit{Llama} & Addestramento personalizzato & \textit{Open-source}, flessibilità & Prestazioni limitate senza modifiche avanzate \\
+        \hline
     \end{tabularx}
-    \caption{Tabella confronto riassuntivo \gls{llm}}
-    \end{table}%
+    \caption{Tabella confronto riassuntivo \textit{LLM}}
+    \label{tab:confronto-lllm}
+\end{table}
