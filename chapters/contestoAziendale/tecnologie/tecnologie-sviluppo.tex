@@ -7,10 +7,10 @@ Il linguaggio di \textit{markup} standard utilizzato per la creazione di pagine 
 Questo linguaggio consente di strutturare i contenuti di una pagina \textit{web}, definendo la disposizione ed il formato di elementi come testo, immagini, \textit{link}, tabelle, liste, moduli e molto altro.\\
 
 \noindent Attraverso l’uso di elementi o \textit{tag}, racchiusi tra parentesi angolari (\textit{< >}), è possibile specificare la semantica e l’organizzazione del contenuto. 
-Ad esempio, i \textit{tag} \textit{<p>} indicano un paragrafo, mentre i tag \textit{<img>} consentono di inserire immagini. \\
+Ad esempio, i \textit{tag} \textit{<p>} indicano un paragrafo, mentre i \textit{tag} \textit{<img>} consentono di inserire immagini. \\
 Grazie alla sua struttura intuitiva, \gls{html} è facile da imparare ed è utilizzato come base per la creazione di qualsiasi sito \textit{web}.\\
 
-\noindent Un aspetto fondamentale di \gls{html} è la possibilità di collegare risorse esterne, come fogli di stile \gls{css} per la gestione dell’aspetto visivo, e file \textit{JavaScript} per l’aggiunta di funzionalità interattive. \\
+\noindent Un aspetto fondamentale di \gls{html} è la possibilità di collegare risorse esterne, come fogli di stile \gls{css} per la gestione dell’aspetto visivo, e \textit{file} \textit{JavaScript} per l’aggiunta di funzionalità interattive. \\
 Questo permette di separare il contenuto dalla presentazione e dalla logica, favorendo un design modulare e flessibile.
 
 \subsubsection{CSS}
@@ -81,7 +81,7 @@ Ogni componente è costruito per integrarsi perfettamente con l’ecosistema di 
 Supporta nativamente le \textit{Promises}, rendendo la gestione delle operazioni asincrone più chiara e leggibile, ed offre funzionalità avanzate come l’impostazione di intestazioni personalizzate, gestione automatica dei \textit{JSON},
 \textit{timeout} configurabili e la possibilità di intercettare richieste e risposte per aggiungere logiche specifiche.\\
 
-\noindent \gls{http} è uno standard di comunicazione utilizzato su \textit{Internet} per il trasferimento di informazioni tra un \textit{client} (come un \textit{browser}) ed un \textit{server}.\\
+\noindent \gls{http} è uno \textit{standard} di comunicazione utilizzato su \textit{Internet} per il trasferimento di informazioni tra un \textit{client} (come un \textit{browser}) ed un \textit{server}.\\
 Ogni interazione si basa su un modello di richiesta-risposta: il \textit{client} invia una richiesta al \textit{server} specificando l’azione desiderata (es. recuperare dati o inviarli), ed il \textit{server} risponde con le informazioni richieste o con un messaggio d’errore.\\
 
 \noindent Il \gls{backend} di un’applicazione rappresenta la parte non visibile dall'utente, responsabile della logica di elaborazione dei dati, della gestione del \textit{database} e dell’esposizione delle \gls{api} necessarie per interagire con il \gls{frontend}.\\
@@ -98,13 +98,13 @@ Ad esempio, possono essere utilizzate per recuperare dati da un \textit{database
 \textit{Vite} è uno strumento di sviluppo rapido e leggero che semplifica la configurazione e ottimizza il flusso di lavoro nel processo di sviluppo di applicazioni \textit{web}. \\
 Utilizza \textit{ES Modules} per un caricamento veloce delle risorse ed una gestione ottimizzata dei moduli, riducendo i tempi di avvio e di aggiornamento durante lo sviluppo.\\
 
-\noindent Quando utilizzato con \textit{React}, \textit{Vite} facilita la creazione di applicazioni configurando automaticamente il progetto, gestendo il \textit{bundling} ed il supporto per l'\textit{hot module replacement}.\\
-Questo permette di visualizzare istantaneamente le modifiche nel codice senza dover ricaricare la pagina, migliorando notevolmente l’esperienza di sviluppo.
+\noindent Quando utilizzato con \textit{React}, \textit{Vite} facilita la creazione di applicazioni configurando automaticamente il progetto, gestendo il \textit{bundling} ed il supporto per l'\textit{hot module replacement},
+che permette di visualizzare istantaneamente le modifiche nel codice senza dover ricaricare la pagina, migliorando notevolmente l’esperienza di sviluppo.
 
 \subsubsection{React-PDF}
 
 \textit{React-PDF} è una libreria per il \textit{rendering} di documenti PDF direttamente all'interno di applicazioni \textit{React}. \\
-Questa libreria consente di visualizzare file PDF come componenti \textit{React}, rendendo possibile l'integrazione di documenti interattivi nelle pagine \textit{web} senza la necessità di \textit{software} esterni.\\
+Questa libreria consente di visualizzare \textit{file} PDF come componenti \textit{React}, rendendo possibile l'integrazione di documenti interattivi nelle pagine \textit{web} senza la necessità di \textit{software} esterni.\\
 
 \noindent Con \textit{React-PDF}, è possibile caricare e mostrare file PDF, navigare tra le pagine, zoomare e persino aggiungere funzionalità interattive, come la gestione di eventi per rendere l’esperienza utente più dinamica. \\
 Inoltre, la libreria offre il supporto per l’integrazione di funzionalità avanzate come la visualizzazione di PDF remoti o caricati dinamicamente.\\
@@ -145,16 +145,16 @@ Consente di definire \textit{schema} che specificano la forma ed i vincoli che i
 Il principale punto forza di \textit{Zod} risiede nella sua sintassi semplice e intuitiva, che permette di scrivere validazioni in modo dichiarativo e di catturare errori di tipo in fase di sviluppo, evitando \textit{bug} e problemi di coerenza nei dati.\\
 
 \noindent Nel contesto dell'applicazione creata, ho utilizzato \textit{Zod} sia nel \gls{frontend} che nel \gls{backend} per garantire la correttezza dei dati.\\
-Nel \gls{frontend}, \textit{Zod} viene impiegato per la validazione dei dati di \textit{login}, ad esempio verificando che le credenziali inserite dall'utente siano nel formato corretto e rispettino determinati criteri (come la lunghezza minima della \textit{password} o la validità dell'indirizzo \textit{email}).\\
+Nel \gls{frontend}, \textit{Zod} viene impiegato per la validazione dei dati di \textit{login}, verificando che le credenziali inserite dall'utente siano nel formato corretto e rispettino determinati criteri (come la lunghezza minima della \textit{password} o la validità dell'indirizzo \textit{email}).\\
 Questa validazione aiuta a migliorare l'esperienza utente e a ridurre gli errori lato \textit{client}.\\
 
 \noindent Nel \gls{backend}, \textit{Zod} viene utilizzato per validare le richieste ricevute dal \gls{frontend}, garantendo che i dati abbiano la struttura corretta e soddisfino le condizioni necessarie prima di essere elaborati ulteriormente.\\
-L'uso di \textit{Zod} nel backend riduce la possibilità di errori nei dati in ingresso, contribuendo ad una gestione più sicura ed affidabile delle informazioni, migliorando anche la robustezza e la manutenibilità del codice.
+L'uso di \textit{Zod} nel \gls{backend} riduce la possibilità di errori nei dati in ingresso, contribuendo ad una gestione più sicura ed affidabile delle informazioni, migliorando anche la robustezza e la manutenibilità del codice.
 
 \subsubsection{MongoDB}
 
 Come \textit{database} sono andato ad utilizzare \textit{MongoDB}, un \textit{database NoSQL} altamente scalabile e flessibile, progettato per gestire dati sotto forma di documenti \textit{JSON-like}.\\
-Questo tipo di database è particolarmente indicato per applicazioni moderne che necessitano di una gestione efficiente di grandi volumi di dati non strutturati o semi-strutturati.\\
+Questo tipo di \textit{database} è particolarmente indicato per applicazioni moderne che necessitano di una gestione efficiente di grandi volumi di dati non strutturati o semi-strutturati.\\
 \textit{MongoDB} si distingue per la sua capacità di scalare orizzontalmente, ovvero di espandersi facilmente su più \textit{server}  per gestire carichi di lavoro elevati, senza compromettere le prestazioni. 
 È anche molto versatile nell'integrazione con diverse tecnologie e ambienti, rendendolo una scelta popolare per progetti che richiedono flessibilità e rapidità nello sviluppo.\\
 
@@ -169,7 +169,7 @@ Inoltre, i \textit{database NoSQL} sono progettati per supportare operazioni di 
 il che significa che è più facile distribuire i dati su più \textit{server} per gestire l'aumento delle richieste senza compromettere le prestazioni.\\
 Questo li rende particolarmente adatti per applicazioni \textit{web moderne} e scenari di microservizi.\\
 
-\noindent Nella {\hyperref[fig:sql-nosql]{Figura 1.6}} è possibile vedere uno schema che mostra la differenza di struttura dei dati tra un \textit{database SQL} e un \textit{database NoSQL}.
+\noindent Nella {\hyperref[fig:sql-nosql]{Figura 1.6}} è possibile vedere uno schema che mostra la differenza di struttura dei dati tra un \textit{database SQL} ed un \textit{database NoSQL}.
 
 \begin{figure}[H]
     \label{fig:sql-nosql}
@@ -193,12 +193,12 @@ Questo permette agli sviluppatori di definire strutture dati robuste, convalidar
 \subsubsection{Puppeteer}
 
 \textit{Puppeteer} è una libreria \textit{Node.js} che fornisce un'interfaccia di alto livello per controllare un \textit{browser} \gls{chromium} in modalità \textit{headless}, cioè senza interfaccia grafica, per automatizzare attività come il rendering di pagine \textit{web} e la generazione di \textit{file} PDF.\\
-\textit{Chromium} è un \textit{browser open-source} sviluppato da \textit{Google}, che funge da base per browser come \textit{Google Chrome, Microsft Edge, ecc.}.\\
+\textit{Chromium} è un \textit{browser open-source} sviluppato da \textit{Google}, che funge da base per browser come \textit{Google Chrome, Microsft Edge, ecc.}\\
 
 \noindent Grazie a \textit{Puppeteer}, è possibile interagire programmaticamente con \textit{Chromium}, simulando l'esecuzione di \textit{script}, il caricamento di contenuti dinamici, l'interazione con il \textit{DOM}, e la creazione di documenti.\\
 
 \noindent \textit{Puppeteer} è particolarmente utile per generare documenti PDF da template \textit{web}, mantenendo la formattazione, gli stili e i \textit{layout} originali, permettendo la personalizzazione di aspetti come margini, dimensioni della pagina e orientamento.\\
-Questa libreria è stata impiegata nel progetto per generare file PDF contenenti i dati dei progetti, assicurando la coerenza e l'alta qualità dei documenti prodotti, sia in termini di formato che di contenuti.
+Questa libreria è stata impiegata nel progetto per generare \textit{file} PDF contenenti i dati dei progetti generati, assicurando la coerenza e l'alta qualità dei documenti prodotti, sia in termini di formato che di contenuti.
 
 \subsubsection{HandleBars}
 
@@ -287,6 +287,6 @@ Un servizio di archiviazione \textit{cloud} progettato per memorizzare oggetti d
     \item \textbf{Integrazione con altri servizi \gls{aws}:} per analisi, distribuzione di contenuti o \gls{machine-learning}.
 \end{itemize}
 
-\noindent Nel progetto specifico, \textit{AWS S3} è stato utilizzato per archiviare in modo sicuro i \textit{file} PDF generati dinamicamente.\\
+\noindent Nel progetto specifico, sono andato ad usare \textit{AWS S3} per archiviare in modo sicuro i \textit{file} PDF generati dinamicamente.\\
 Grazie alla funzionalità di versionamento di \textit{AWS S3}, ogni volta che un documento viene aggiornato o rigenerato, una nuova versione del \textit{file} viene automaticamente salvata, mantenendo le versioni precedenti accessibili.\\
 Questo processo garantisce che le modifiche ai documenti siano tracciate e che si possieda una storicità completa dei \textit{file}, permettendo di ripristinare versioni precedenti in caso di necessità, il tutto senza compromettere l'affidabilità o la sicurezza dei dati.
