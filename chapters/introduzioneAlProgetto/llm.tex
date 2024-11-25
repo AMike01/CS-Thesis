@@ -41,11 +41,11 @@ Le probabilità per le parole successive potrebbero essere le seguenti:
 \pagebreak
 \begin{enumerate}
     \item Senza utilizzo dei parametri, il modello seleziona la parola con probabilità più alta: \\
-    \textit{``Il sistema ha ricevuto una richiesta da un utente autenticato''};
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un utente autenticato}''};
     \item Con temperatura alta (ad esempio 1.0), il modello seleziona una parola in modo casuale, ad esempio: \\
-    \textit{``Il sistema ha ricevuto una richiesta da un server remoto''};
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un server remoto}''};
     \item Con \textit{top-K} basso (ad esempio 2), il modello seleziona una parola tra le due con probabilità più alta, ad esempio: \\
-    \textit{``Il sistema ha ricevuto una richiesta da un client esterno''}.
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un client esterno}''}.
 \end{enumerate}
 
 \noindent Un altro concetto fondamentale per comprendere il funzionamento dei \gls{llmg} è quello dei \gls{token}.\\
