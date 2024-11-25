@@ -1,25 +1,29 @@
 \section{Descrizione proposta di stage}
 \label{sez:descrizione-stage}
 
-L'idea alla base dello stage è quella di riuscire ad automatizzare la creazione di un documento detto allegato tecnico; questo è un documento che contiene
-tutte le informazioni tecniche riguardanti un progetto software, dalle tecnologie utilizzate alla struttura del progetto, passando per le scelte architetturali fino al piano di \textit{testing}.\\
-L'azienda fino a questo momento ha sempre creato questo documento manualmente, ma con l'aumento dei progetti e delle risorse impiegate, la possibilità di usare un \textit{tool} che automatizzi questo processo,
-almeno in parte, risulta molto interessante.\\
+L'idea alla base dello \textit{stage} è quella di automatizzare la creazione di un documento denominato *allegato tecnico*.\\  
+Questo documento raccoglie tutte le informazioni tecniche relative a un progetto software, comprese le tecnologie utilizzate,
+la struttura del progetto, le scelte architetturali ed il piano di \textit{testing}, per citare alcune delle sezioni.\\  
+Fino ad oggi, l'azienda ha sempre realizzato questo documento manualmente. Tuttavia, con l'aumento dei progetti e delle risorse impiegate,
+l'introduzione di un \textit{tool} per automatizzare, anche solo parzialmente, questo processo risulta particolarmente interessante.\\  
 
-\noindent L'obiettivo dello stage è quindi quello di creare una piattaforma \textit{web} che permetta, tramite l'utilizzo di sistemi di \gls{ai-generativa}, di creare in modo automatico questo documento. \\
-L'utente finale sarà un membro del \textit{team} di sviluppo od il \gls{project-manager}, che andrà a compilare dei \textit{Preset}, ovvero una lista di domande create \textit{ad-hoc} per raccogliere le informazioni necessarie per la creazione del documento,
-ottimizzato in base al tipo di progetto che si vuole creare (una \textit{Web App}, una \textit {Mobile App,} ecc.).\\
-Il sistema andrà quindi a creare il documento in automatico, tramite l'utilizzo di servizi di \gls{ai-generativa} forniti da AWS (AGGIUNGERE TERMINE GLOSSARIO). \\
+\noindent L'obiettivo dello \textit{stage} è quindi la realizzazione di una piattaforma \textit{web} che, tramite l'uso di sistemi di \gls{ai-generativa},\\  
+permetta di generare automaticamente questo documento.\\  
+L'utente finale della piattaforma sarà un membro del \textit{team} di sviluppo o il \textit{project-manager}.\\  
+Questi avrà la possibilità di compilare dei \textit{Preset}, ovvero una serie di domande progettate \textit{ad hoc}
+per raccogliere le informazioni necessarie alla creazione del documento, ottimizzate in base al tipo di progetto da sviluppare (ad esempio, una \textit{Web App} o una \textit{Mobile App}).\\  
+Il sistema utilizzerà i servizi di \gls{ai-generativa} forniti da AWS (AGGIUNGERE TERMINE GLOSSARIO) per creare il documento automaticamente.\\  
 
-\noindent L'utente potrà quindi andare a rigenerare il documento in parte o nella sua interezza, tramite l'inserimento di un \gls{prompt}.\\
-Questo \gls{prompt} sarà una frase o un paragrafo che andrà a guidare il sistema nella creazione del documento, permettendo all'utente di specificare esattamente le migliorie che vuole vengano apportate al documento.\\
-Tutte le versioni del documento verranno salvate e sarà possibile  visualizzare le differenze tra le varie versioni.\\
-Quando l'utente sarà soddisfatto del documento creato, potrà scaricarlo in formato \textit{PDF}.\\
-Nella {\hyperref[fig:project-schema]{Figura X}} è possibile vedere uno schema che rappresenta l'idea del progetto.\\
+\noindent Inoltre, l'utente avrà la possibilità di rigenerare il documento, in parte o nella sua totalità, inserendo un \gls{prompt}.\\  
+Questo \gls{prompt} sarà una frase o un paragrafo che guiderà il sistema, consentendo all'utente di specificare le migliorie o modifiche da apportare al documento.\\  
+Tutte le versioni del documento verranno salvate, permettendo di visualizzare le differenze tra una versione e l'altra.\\  
+Una volta soddisfatto del risultato, l'utente potrà scaricare il documento in formato \textit{PDF}.\\  
+Nella {\hyperref[fig:project-schema]{Figura 2.1}} è mostrato uno schema che rappresenta l'idea alla base del progetto.\\  
+
 
 \begin{figure}[H]
     \label{fig:project-schema}
     \centering
-    \includegraphics[scale=0.5]{gen-ai-documentation-schema.png}
+    \includegraphics[scale=0.6]{gen-ai-documentation-schema.png}
     \caption{Schema del progetto}
 \end{figure}
