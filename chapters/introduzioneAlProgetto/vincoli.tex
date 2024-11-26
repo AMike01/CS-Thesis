@@ -12,7 +12,7 @@ Questi vincoli sono essenziali per assicurare l’integrazione con l’ecosistem
 \noindent Di seguito vengono descritti nel dettaglio:
 \begin{itemize}
     \item \textbf{Documentazione \textit{Swagger} delle \gls{api}:} Ogni \gls{api} sviluppata dovrà essere accompagnata da una documentazione completa generata con \textit{Swagger}. \\
-    Questo strumento consente di definire e visualizzare la struttura delle \textit{API Restful}, garantendo una comunicazione chiara e standardizzata tra i diversi \textit{team} di sviluppo;
+    Questo strumento consente di definire e visualizzare la struttura delle \gls{api-restful}, garantendo una comunicazione chiara e standardizzata tra i diversi \textit{team} di sviluppo;
     \item \textbf{\textit{Test} di unità:} È necessario implementare \textit{test} di unità per tutte le componenti del sistema, sia \gls{frontend} che \gls{backend},
     al fine di garantire la correttezza funzionale del codice e ridurre i rischi di regressioni durante le fasi di sviluppo e manutenzione;
     \item \textbf{Ambiente di \textit{test} funzionante:} La \textit{web application} deve essere operativa in un ambiente di \textit{test} che simuli condizioni reali. \\
@@ -21,7 +21,7 @@ Questi vincoli sono essenziali per assicurare l’integrazione con l’ecosistem
     Questi strumenti permettono di sviluppare applicazioni altamente interattive con una \textit{user experience} avanzata;
     \item \textbf{Autenticazione:} Per la gestione dell’autenticazione e autorizzazione, devono essere utilizzati \textit{AWS Amplify} e \textit{AWS Cognito}, soluzioni che offrono sicurezza, scalabilità e facilità di integrazione con altre piattaforme \gls{aws}.
     \item \textbf{Tecnologie \gls{backend}:} Nel \gls{backend}, lo sviluppo deve avvenire utilizzando \textit{NestJS}, un framework basato su \textit{Node.js} che favorisce la creazione di architetture scalabili e modulari. \\
-    È inoltre obbligatorio andare ad implementare \textit{API Restful}, aderendo ai principi \textit{REST} per garantire interoperabilità e riusabilità dei servizi;
+    È inoltre obbligatorio andare ad implementare \gls{api-restful}, aderendo ai principi \textit{REST} per garantire interoperabilità e riusabilità dei servizi;
     \item \textbf{Gestione dei documenti:} La generazione dei documenti deve essere effettuata utilizzando \textit{AWS Bedrock}, una piattaforma innovativa che sfrutta modelli di \gls{ai} per la creazione e l’elaborazione automatizzata di contenuti altamente personalizzati. \\
     I documenti generati devono essere archiviati in modo sicuro nel \textit{cloud} tramite \textit{AWS S3}, che garantisce alta durabilità, scalabilità e accessibilità globale;
     \pagebreak
@@ -50,7 +50,7 @@ L’organizzazione del lavoro ha seguito precise linee guida per garantire un’
     Ogni \gls{sprint} inizia con una pianificazione, dove vengono definiti i compiti prioritari da completare, e termina con una \textit{sprint retrospective}, 
     una riunione durante la quale il \textit{team} analizza i risultati ottenuti, identifica eventuali problematiche e propone soluzioni per migliorare i successivi \gls{sprint}. \\
     Questo approccio garantisce un processo di sviluppo iterativo e incrementale, promuovendo la consegna continua di valore;
-    \item \textbf{Utilizzo di \gls{git-flow}:} Durante lo stage, il lavoro di sviluppo sarà organizzato utilizzando \gls{git-flow}, una metodologia di gestione del flusso di lavoro in \textit{Git} che aiuta a strutturare in modo efficiente i processi di sviluppo e gestione del codice sorgente.\\
+    \item \textbf{Utilizzo di \gls{git-flow}:} Durante lo stage, il lavoro di sviluppo sarà organizzato utilizzando \gls{git-flow}, una metodologia di gestione del flusso di lavoro in \textit{Git} che aiuta a strutturare in modo efficiente i processi di sviluppo e gestione del codice sorgente\footcite{site:git-flow}.\\
     \gls{git-flow} si basa su un ramo principale (\texttt{main}) e due rami di sviluppo principali: \texttt{develop} per lo sviluppo quotidiano e \texttt{feature} per le nuove funzionalità.\\
     Inoltre, vengono utilizzati rami di \texttt{release} per preparare nuove versioni stabili del \textit{software} e rami di \texttt{hotfix} per correggere errori urgenti nelle versioni di produzione.
     Il flusso di lavoro con \gls{git-flow} permette di isolare le modifiche, garantire che il codice sia sempre testato e pronto per essere distribuito, e facilitare il lavoro in \textit{team}, mantenendo il codice principale sempre stabile.\\
@@ -71,15 +71,15 @@ Il progetto prevede la consegna di diversi prodotti finali che soddisfino i requ
 
 \begin{itemize}
     \item \textbf{\textit{Web application}:} Lo sviluppo di una \textit{web application} completa e funzionante, che consenta agli utenti finali di interagire con le funzionalità previste dal progetto;
-    \item \textbf{\textit{API RESTful}:} La realizzazione di un set di \textit{API RESTful} che fornisca i servizi \gls{backend} necessari per il funzionamento della \textit{web application};
+    \item \textbf{\gls{api-restful}:} La realizzazione di un set di \gls{api-restful} che fornisca i servizi \gls{backend} necessari per il funzionamento della \textit{web application};
     \item \textbf{Documento di analisi progettuale:} Un documento esaustivo che descriva nel dettaglio le scelte progettuali e i servizi \gls{aws} utilizzati.\\
     Questo documento deve evidenziare il ruolo di ciascun servizio, come \textit{AWS Bedrock} per la generazione di documenti e \textit{AWS S3} per l’archiviazione nel cloud, 
     andando a giustificare le scelte in termini di benefici per il progetto;
-    \item \textbf{Documentazione delle \gls{api} con \textit{Swagger}:} È prevista la generazione automatica della documentazione delle \textit{API RESTful} tramite \textit{Swagger}. \\
+    \item \textbf{Documentazione delle \gls{api} con \textit{Swagger}:} È prevista la generazione automatica della documentazione delle \gls{api-restful} tramite \textit{Swagger}. \\
     Tale documentazione deve includere informazioni dettagliate sulle funzionalità disponibili, i percorsi, i metodi supportati, i formati di richiesta e risposta, e gli eventuali codici di errore. \\
     La documentazione deve essere costantemente aggiornata per riflettere eventuali modifiche alle \gls{api};
     \item \textbf{Documentazione del piano di \textit{test}:} Un documento dettagliato che descriva il piano di \textit{test} e collaudo della piattaforma. \\
-    Questo piano deve includere le strategie di \textit{test} per tutte le componenti del sistema, comprese le \textit{API RESTful}, la \textit{web application} e i servizi \gls{backend}.\\
+    Questo piano deve includere le strategie di \textit{test} per tutte le componenti del sistema, comprese le \gls{api-restful}, la \textit{web application} e i servizi \gls{backend}.\\
     La documentazione deve includere i \textit{test} unitari, i \textit{test} di integrazione, i \textit{test} di sistema e i \textit{test} di accettazione. \\
     Ogni \textit{test} dovrà essere accompagnato da un piano di esecuzione e dai criteri di accettazione per garantire la qualità e la funzionalità del sistema in ogni sua parte.\\
 \end{itemize}
