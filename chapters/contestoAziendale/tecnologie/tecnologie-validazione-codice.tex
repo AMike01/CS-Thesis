@@ -1,0 +1,38 @@
+\subsection{Tecnologie di verifica e validazione del codice}
+\label{sez:tecnologie-validazione-codice}
+
+\subsubsection{Jest}
+
+\textit{Jest} è un framework di \textit{testing JavaScript} progettato per garantire la qualità del codice, supportando \textit{test} unitari e di integrazione.\\
+Grazie alla sua semplicità, velocità e alle funzionalità avanzate come la simulazione di funzioni e la generazione di \textit{report} dettagliati, \textit{Jest} è particolarmente adatto per l'automazione dei \textit{test} nei progetti moderni.\\
+
+\noindent Nel progetto ho utilizzato \textit{Jest} per creare \textit{test} unitari sia per il \gls{frontend} che per il \gls{backend}, permettendo di verificare il corretto funzionamento dei singoli componenti del sistema.\\
+Per il \gls{frontend}, \textit{Jest} è stato impiegato per testare componenti \textit{React} e logiche  \textit{JavaScript}, mentre per il \gls{backend} è stato utilizzato per testare le \gls{api} e i servizi implementati in \textit{NestJS}.\\
+L'uso di \textit{Jest} ha facilitato il rilevamento tempestivo di errori e ha migliorato l'affidabilità del codice, garantendo una qualità elevata in tutte le fasi di sviluppo.
+
+\subsubsection{React Testing Library}
+\textit{React Testing Library} è una libreria per testare i componenti \textit{React}, progettata per favorire il \textit{testing} dell'interazione dell'utente piuttosto che l'implementazione interna del componente. \\
+Si concentra sul comportamento dell'interfaccia utente e sulla corretta gestione degli eventi, consentendo di simulare azioni dell'utente come clic, inserimento di testo e interazioni con i \textit{form}.\\
+
+\noindent Nel progetto ho utilizzato \textit{React Testing Library} per \textit{testare} i componenti \textit{React}, garantendo che ciascun componente rispondesse correttamente alle azioni dell'utente e alle modifiche di stato. \\
+In particolare, è stato impiegato per verificare la corretta visualizzazione dei dati, la gestione degli eventi e l'integrazione tra i vari componenti dell'interfaccia utente.\\ 
+L'approccio focalizzato sull'interazione utente ha contribuito a testare la funzionalità complessiva dell'applicazione, migliorando la qualità e l'affidabilità dell'esperienza utente.
+
+\subsubsection{Prettier}
+
+\textit{Prettier} è uno strumento di formattazione automatica del codice che aiuta a mantenere uno stile uniforme e coerente, migliorando la leggibilità e la manutenzione del codice nel lungo periodo.\\
+Supporta una vasta gamma di linguaggi di programmazione e può essere facilmente integrato nei flussi di lavoro di sviluppo.\\
+
+\noindent Nel progetto ho utilizzato \textit{Prettier} per formattare automaticamente il codice \textit{TypeScript}, garantendo che tutte le modifiche apportate al codice rispettassero uno stile comune e standardizzato.\\
+Questa integrazione ha semplificato la gestione del codice, migliorando la coerenza e riducendo la possibilità di errori legati a incongruenze stilistiche. \\
+Inoltre, \textit{Prettier} è stato integrato nei flussi di lavoro di sviluppo, assicurando che il codice formattato correttamente venisse applicato in modo continuo, anche durante la fase di revisione e aggiornamento del codice.
+
+\subsubsection{ESLint}
+
+\textit{ESLint} è uno strumento di \textit{linting} per \textit{JavaScript} che aiuta a individuare e correggere errori nel codice, migliorando la qualità e la coerenza del codice stesso.\\
+Supporta configurazioni personalizzabili e si integra facilmente con \gls{ide}, offrendo un'esperienza di sviluppo più fluida.\\
+
+\noindent Nel progetto ho utilizzato \textit{ESLint} con \textit{TypeScript} per monitorare e mantenere alta la qualità del codice. \\
+La configurazione di \textit{ESLint} per \textit{TypeScript} consente di identificare potenziali errori, migliorare la coerenza tra le diverse parti del codice e applicare regole stilistiche personalizzabili.\\
+Questo strumento ha contribuito a prevenire bug, ottimizzare la struttura del codice e applicando le \textit{best practices} nel trattamento del codice \textit{TypeScript}.
+
