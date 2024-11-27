@@ -1,0 +1,88 @@
+\renewcommand{\arraystretch}{1.5} % Increases the row height for better vertical space
+
+\begin{longtable}{|c|>{\centering\arraybackslash}p{0.7\textwidth}|c|} % Adjust the column width with p{0.7\textwidth}
+    \hline
+    \rowcolor{green!30} % Header color: light green
+    \textbf{Codice Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
+    \hline
+    \endfirsthead % Start of the table, first header
+    
+    \hline
+    \rowcolor{green!30} % Header color on subsequent pages
+    \textbf{Codice Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
+    \hline
+    \endhead % Continuation of the table (repeats on every page)
+    
+    \hline
+    \multicolumn{3}{|c|}{\rowcolor{green!30} \textbf{Requisiti Funzionali}} \\
+    \hline % Adds a horizontal line after the header row
+    \textbf{RFO-1} & Il sistema deve consentire all'utente non autenticato di effettuare il \textit{login} inserendo \textit{email} e \textit{password} & UC1 \\
+    \hline
+    \textbf{RFO-2} & Il sistema deve autenticare l'utente con credenziali valide e reindirizzarlo alla \textit{dashboard} & UC1 \\
+    \hline
+    \textbf{RFO-3} & Il sistema deve mostrare un messaggio di errore in caso di \textit{login} fallisca & UC3 \\
+    \hline
+    \textbf{RFO-4} & Il sistema deve consentire all'utente autenticato di effettuare il logout & UC2 \\
+    \hline
+    \textbf{RFO-5} &  Il sistema deve mostrare la lista di tutti i progetti disponibili all'utente autenticato nella \textit{dashboard} & UC4 \\
+    \hline
+    \textbf{RFD-6} & Il sistema deve permettere di cercare e filtrare i progetti in base a nome o data specificati dall’utente autenticato & UC5 \\
+    \hline
+    \textbf{RFO-7} & Il sistema deve consentire la visualizzazione dettagliata di un singolo progetto & UC6 \\
+    \hline
+    \textbf{RFO-8} & Il sistema deve consentire la visualizzazione della descrizione dettagliata di un \textit{preset} & UC7 \\
+    \hline
+    \textbf{RFD-9} & Il sistema deve permettere il salvataggio di un \textit{preset} parzialmente compilato come bozza & UC8 \\
+    \hline
+    \textbf{RFD-10} & Il sistema deve mostrare la lista di tutte le bozze disponibili all'utente autenticato & UC9 \\
+    \hline
+    \textbf{RFD-11} & Il sistema deve permettere di cercare e filtrare le bozze in base a nome o data specificati dall’utente autenticato & UC10 \\
+    \hline
+    \textbf{RFO-12} & Il sistema deve consentire all'utente di generare un progetto utilizzando un \textit{preset} compilato nella sua interezza & UC11 \\
+    \hline
+    \textbf{RFO-13} & Il sistema deve consentire all'utente di rigenerare un intero progetto, sostituendo completamente il contenuto esistente & UC12 \\
+    \hline
+    \textbf{RFD-14} & Il sistema deve consentire all'utente di rigenerare un singolo capitolo di un progetto lasciando invariati i restanti capitoli & UC13 \\
+    \hline
+    \textbf{RFO-15} & Il sistema deve consentire all'utente di eliminare un progetto esistente & UC14 \\
+    \hline
+    \textbf{RFO-16} & Il sistema deve consentire la visualizzazione di un progetto in formato PDF & UC15 \\
+    \hline
+    \textbf{RFO-17} & Il sistema deve consentire il download di un progetto generato in formato PDF & UC16 \\
+    \hline
+    \textbf{RFF-18} & Il sistema deve consentire la visualizzazione delle versioni precedenti di un progetto & UC17 \\
+    \hline
+    \textbf{RFF-19} & Il sistema deve consentire la rimozione di capitoli non necessari dal progetto generato & UC18 \\
+    \hline
+    \pagebreak
+    \hline
+    \multicolumn{3}{|c|}{\rowcolor{green!30} \textbf{Requisiti Non Funzionali}} \\
+    \hline % Adds a horizontal line after the subtitle
+    \textbf{RNFO-1} & Il sistema deve garantire che i tempi di risposta per la generazione o la rigenerazione di un progetto non superino i 30 secondi in condizioni di carico normale & Interna \\
+    \hline
+    \textbf{RNFO-2} & Il sistema deve fornire un’interfaccia utente \textit{responsive}, accessibile da dispositivi \textit{desktop} e \textit{mobile} & Interna \\
+    \hline
+    \textbf{RNFO-3} & I messaggi di errore devono essere chiari, concisi e facilmente comprensibili dall'utente & Interna \\
+    \hline
+    \multicolumn{3}{|c|}{\rowcolor{green!30} \textbf{Requisiti Tecnologici}} \\
+    \hline
+    \textbf{RT-1} & Il sistema deve utilizzare \textit{AWS Bedrock} per la generazione e rigenerazione di contenuti dei progetti & Interna \\
+    \hline
+    \textbf{RT-2} & Il sistema deve supportare la generazione di \textit{file} PDF utilizzando \textit{Puppeteer} & Interna \\
+    \hline
+    \textbf{RT-3} & Il frontend dell’applicazione deve utilizzare la libreria \textit{ReactJS} & Interna \\
+    \hline
+    \textbf{RT-4} & Il backend dell’applicazione deve utilizzare \textit{NestJS} & Interna \\
+    \hline
+    \textbf{RT-5} & Il sistema deve essere autenticato tramite \textit{AWS Cognito} & Interna \\
+    \hline
+    \textbf{RT-6} & Il sistema deve utilizzare \textit{AWS S3} per l’archiviazione dei documenti PDF. & Interna \\
+    \hline
+    \textbf{RT-7} & Le \gls{api} devono essere autenticate tramite \gls{jwt}. & Interna \\
+    \hline
+    \textbf{RT-8} & Il \textit{database} utilizzato deve essere \textit{MongoDB}. & Interna \\
+    
+    \hline
+    \caption{Tracciamento dei requisiti} % Table caption
+    \label{tab:requisiti-stage} % Label for referencing the table
+\end{longtable}

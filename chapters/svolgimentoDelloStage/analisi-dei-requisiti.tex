@@ -106,7 +106,38 @@ Ho inlcuso esclusivamente i diagrammi relativi ai casi d’uso principali, omett
 
 \input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/casi-uso.tex}
 
+\pagebreak
 \subsection{Tracciamento dei requisiti}
 \label{subsec:requisiti}
 
-Lista dei requisiti individuati, con spiegazione della notazione utilizzata e classificazione tra requisiti funzionali e non funzionali, obbligatori, desiderabili e facoltativi.\\
+Il tracciamento dei requisiti è un processo fondamentale per garantire che tutte le funzionalità e le caratteristiche desiderate del sistema siano correttamente identificate e documentate. \\
+Per questo progetto, sono andato a derivare i requisiti da due fonti principali: i casi d'uso e le fonti interne al progetto, come documenti tecnici, normative aziendali e linee guida.\\ 
+
+\noindent I requisiti funzionali, non funzionali e tecnologici sono stati catalogati e numerati per garantire una chiara tracciabilità durante lo sviluppo del sistema.\\
+Ogni requisito è stato associato ad una priorità che indica l'importanza relativa rispetto alle esigenze del progetto.\\
+
+\noindent La nomenclatura dei requisiti segue il formato descritto di seguito:
+
+\begin{center}
+\textbf{R[Tipologia][Priorità]-[Numero]}
+\end{center}
+
+Dove:
+\begin{itemize}
+    \item \textbf{R}: Acronimo di \textit{Requisito};
+    \item \textbf{Tipologia}: La tipologia del requisito è definita da una delle seguenti lettere:
+        \begin{itemize}
+            \item \textbf{F} (Funzionale): Requisiti relativi alle funzionalità che il sistema deve fornire;
+            \item \textbf{NF} (Non Funzionale): Requisiti che descrivono le qualità del sistema, come le prestazioni, la sicurezza, la scalabilità, ecc.;
+            \item \textbf{T} (Tecnologico): Requisiti riguardanti la tecnologia da utilizzare o le infrastrutture tecnologiche necessarie.
+        \end{itemize}
+    \item \textbf{Priorità}: La priorità del requisito è indicata con una delle seguenti lettere:
+        \begin{itemize}
+            \item \textbf{O} (Obbligatorio): Il requisito è essenziale per il successo del progetto e deve essere soddisfatto senza eccezioni;
+            \item \textbf{F} (Facoltativo): Il requisito è desiderato, ma non è essenziale per il funzionamento del sistema;
+            \item \textbf{D} (Desiderabile): Il requisito è preferibile ma può essere rinviato o rimosso senza compromettere gravemente il progetto.
+        \end{itemize}
+    \item \textbf{Numero}: Un numero intero progressivo che identifica in modo univoco ogni requisito.
+\end{itemize}
+
+\input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/tracciamento-requisiti.tex}
