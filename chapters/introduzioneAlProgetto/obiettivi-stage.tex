@@ -1,4 +1,74 @@
+\pagebreak
 \section{Obiettivi aziendali}
 \label{sez:obiettivi-aziendali}
 
-Descrizione degli obiettivi aziendali dello stage: obbligatori, facoltativi e desiderabili dati dall'azienda.
+Gli obiettivi forniti dall'azienda sono stati definiti a priori dell'inizio dello stage all'interno del documento del \texttt{Piano di Lavoro}, essi si suddividono in:
+\begin{itemize}
+    \item \textbf{OO: Obiettivi obbligatori}, sono gli obiettivi minimi che devono essere raggiunti per considerare lo stage completato con successo;
+    \item \textbf{OD: Obiettivi desiderabili}, sono gli obiettivi non necessari, ma che vanno ad aggiungere valore al prodotto finito;
+    \item \textbf{OF: Obiettivi facoltativi}, sono gli obiettivi opzionali, non necessari per il completamento del progetto.
+\end{itemize}
+
+\noindent All'interno della seguente tabella sono elencati gli obiettivi aziendali dello stage, aventi la seguente nomeclatura:
+
+\begin{center}
+    \textbf{R}-\textbf{N}
+\end{center}
+
+Dove:
+\begin{itemize}
+    \item $\textbf{R} \in  \{OO, OD, OF\}$ rappresentante la tipologia di obiettivo; \\
+    \item $\textbf{N} \in N$ rappresentante il numero progressivo dell'obiettivo.
+\end{itemize}
+
+
+\renewcommand{\arraystretch}{1.5} % Increases the row height for better vertical space
+
+\begin{longtable}{|c|>{\centering\arraybackslash}p{0.7\textwidth}|} % Adjust the column width with p{0.7\textwidth}
+    \hline
+    \rowcolor{green!30} % Header color: light green
+    \textbf{Codice Obiettivo} & \textbf{Descrizione Obiettivo} \\
+    \hline
+    \endfirsthead % Start of the table, first header
+    
+    \hline
+    \rowcolor{green!30} % Header color on subsequent pages
+    \textbf{Codice Obiettivo} & \textbf{Descrizione Obiettivo} \\
+    \hline
+    \endhead % Continuation of the table (repeats on every page)
+    
+    \hline
+    \multicolumn{2}{|c|}{\rowcolor{green!30} \textbf{Obiettivi Obbligatori}} \\
+    \hline % Adds a horizontal line after the header row
+    \textbf{OO-1} & \textbf{Apprendimento delle tecnologie di sviluppo:} Acquisire competenze pratiche nell'uso di \textit{React}, \textit{NestJS} e \textit{MongoDB} per la progettazione e lo sviluppo di applicazioni. \\
+
+    \hline
+    \textbf{OO-2} & \textbf{Gestione del versionamento del codice:} Apprendere l'uso di \textit{Git} e adottare \textit{Git Flow} come metodologia per il controllo delle versioni e la collaborazione. \\
+    \hline
+    \textbf{OO-3} & \textbf{Analisi e scelta del \gls{llm}:} Valutare i modelli disponibili per selezionare quello più adatto al progetto. \\
+    \hline
+    \textbf{OO-4} & \textbf{Introduzione alle metodologie agili:} Familiarizzare con le metodologie agili di sviluppo per la gestione efficace di progetti. \\
+    \hline
+    \textbf{OO-5} & \textbf{Pianificazione e gestione giornaliera:} Imparare a gestire \textit{task} e obiettivi giornalieri allineati al piano di lavoro. \\
+    \hline
+    \textbf{OO-6} & \textbf{Sviluppo di una \textit{web app:}} Progettare e realizzare un'applicazione \textit{web} per consentire l'interazione dell'utente con la piattaforma. \\
+    \hline
+    \textbf{OO-7} & \textbf{Sviluppo ed integrazione con \gls{generative-ai}:} Implementare i flussi logici del progetto e integrare i servizi di \gls{generative-ai} scelti. \\
+    \hline
+    \textbf{OO-8} & \textbf{Documentazione \gls{api}:} Creare una documentazione \textit{Swagger} per le \gls{api} sviluppate. \\
+    \hline
+    \textbf{OO-9} & \textbf{Documento di analisi progettuale:} Redigere un documento tecnico che descriva l'architettura e le componenti principali della piattaforma. \\
+    \hline
+    \textbf{OO-10} & \textbf{\textit{User Story Mapping:}} Realizzare una mappatura delle \gls{user-stories} per descrivere e organizzare i requisiti del progetto. \\
+    \hline
+    \multicolumn{2}{|c|}{\rowcolor{green!30} \textbf{Obiettivi Desiderabili}} \\
+    \hline % Adds a horizontal line after the subtitle
+    \textbf{OD-1} & \textbf{Comparazione tra modelli \gls{llm}:} Effettuare un'analisi comparativa tra almeno due \gls{llm} per verificarne le differenze in termini di prestazioni, funzionalità e costi. \\
+    \hline
+    \multicolumn{2}{|c|}{\rowcolor{green!30} \textbf{Obiettivi Facoltativi}} \\
+    \noalign{\hrule} % Adds a horizontal line after the subtitle
+    \textbf{OF-1} & \textbf{Piattaforma di amministrazione:} Creare una piattaforma \textit{admin} per la gestione dei \textit{Preset} e dei modelli \gls{llm}. \\
+    \hline
+    \caption{Obiettivi aziendali dello \textit{stage}} % Table caption
+    \label{tab:obiettivi_stage} % Label for referencing the table
+\end{longtable}

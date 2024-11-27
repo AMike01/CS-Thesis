@@ -1,12 +1,59 @@
+\pagebreak
 \section{\textit{Large Language Models}}
 \label{sez:llm}
 
 \subsection{Introduzione}
 \label{subsec:llm-introduzione}
 
-Descrizione di cos'è un Large Language Model (LLM), per cosa vengono usati, come si applica all'interno del progetto, ecc.
+I \gls{llmg} sono modelli computazionali progettati per interpretare e generare testo in linguaggio naturale\footcite{site:introduction-llm}.\\
+Sebbene le loro basi teoriche risalgano alla ``Teoria dell'apprendimento statistico'' sviluppata tra gli anni '80 e '90, è solo negli ultimi anni che hanno guadagnato un'attenzione globale significativa. \\
+Questo è stato possibile grazie alla crescente disponibilità di dati e di potenza di calcolo, che hanno permesso la creazione di modelli sempre più grandi e complessi.\\
+Le applicazioni dei \gls{llmg} sono molteplici: traduzioni automatiche, generazione di testi, riconoscimento vocale, e \textit{chatbot} sono solo alcuni esempi.\\
 
-\subsection{Confronto tra principali LLM}
-\label{subsec:llm-confronto}
+\noindent Il principio di funzionamento di un \gls{llmg} si basa sull'addestramento su vastissime quantità di dati testuali, come libri, articoli \textit{web} e altre risorse scritte, 
+per apprendere la struttura e il significato del linguaggio naturale.\\
+Successivamente, questi modelli sono in grado di generare testo coerente e sensato in base al contesto fornito.\\
 
-Confronto tra i principali Large Language Models, come GPT-4, Anthropic Claude 3.5 Sonnet, ecc., per capire le differenze tra di loro, per cosa vengono usati, ecc.
+\noindent I \gls{llmg} utilizzano un approccio ``probabilistico'', ovvero cercano di prevedere la parola successiva in una sequenza testuale basandosi sulle parole precedenti.\\
+Ogni parola ha una probabilità associata, calcolata dal modello. \\
+La parola con la probabilità più alta viene spesso selezionata per garantire coerenza, ma ciò può portare a risultati prevedibili e poco creativi, che possono risultare poco interessanti per l'utente.\\
+
+\noindent Per ovviare a questo problema, si utilizzano i seguenti parametri\footcite{site:mediun-llm-parameters}:
+\begin{itemize}
+    \item \textbf{Temperatura}: regola la casualità delle scelte del modello. \\
+    Un valore basso predilige la scelta della parola con probabilità più alta, mentre un valore alto aumenta la casualità delle scelte.
+    \item \textbf{\textit{Top-K}}: limita la scelta alle \textit{top-K} parole con probabilità più alta.\\
+    Questo permette di evitare scelte troppo casuali e poco coerenti, andando a bilanciare prevedibilità e casualità.\\
+\end{itemize}
+
+\noindent Mostriamo ora un esempio: supponiamo che una \gls{llmg} stia generando una frase a partire dalla seguente sequenza di parole: 
+\begin{center}
+    \textit{``Il sistema ha ricevuto una richiesta da''}\\
+\end{center}
+
+Le probabilità per le parole successive potrebbero essere le seguenti:
+\begin{itemize}
+    \item \textit{``un utente autenticato''}: 0.4
+    \item \textit{``un client esterno''}: 0.3
+    \item \textit{``un microservizio interno''}: 0.2
+    \item \textit{``un server remoto''}: 0.1
+\end{itemize}
+\pagebreak
+\begin{enumerate}
+    \item Senza utilizzo dei parametri, il modello seleziona la parola con probabilità più alta: \\
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un utente autenticato}''};
+    \item Con temperatura alta (ad esempio 1.0), il modello seleziona una parola in modo casuale, ad esempio: \\
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un server remoto}''};
+    \item Con \textit{top-K} basso (ad esempio 2), il modello seleziona una parola tra le due con probabilità più alta, ad esempio: \\
+    \textit{``Il sistema ha ricevuto una richiesta da \textbf{un client esterno}''}.
+\end{enumerate}
+
+\noindent Un altro concetto fondamentale per comprendere il funzionamento dei \gls{llmg} è quello dei \gls{token}.\\
+Un \gls{token} rappresenta la più piccola unità di testo che un \gls{llm} può elaborare.\\
+I \gls{token} possono essere parole intere, parti di parole o anche singoli caratteri, a seconda del modello e della sua configurazione.\\
+
+\noindent La suddivisione in \gls{token} è cruciale per l'addestramento dei \gls{llmg}, poiché il modello deve essere in grado di gestire e prevedere sequenze di \gls{token} piuttosto che intere frasi o parole.\\
+Durante l'addestramento, il modello apprende le probabilità di transizione tra i \gls{token}, costruendo una rappresentazione statistica del linguaggio naturale.\\
+
+
+
