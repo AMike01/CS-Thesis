@@ -1,0 +1,87 @@
+\subsection{\textit{Frontend}}
+\label{sez:frontend}
+
+Vado a descrivere la struttura dei file, i principali componenti e pagine create all'interno del frontend, come ad esempio la pagina di login, la dashboard, ecc.\\
+
+La struttura della \textit{repository} \gls{frontend} è la seguente:
+
+\begin{itemize}
+    \item \textbf{\textit{public}}: Contiene le immagini o loghi utilizzati nell'applicazione;
+    \item \textbf{\textit{src}}: Contiene il codice sorgente dell'applicazione, suddiviso in diverse cartelle:
+    \begin{itemize}
+        \item \textbf{\textit{tests}}: Contiene tutti i \textit{test} unitari creati per verificare il corretto funzionamento delle varie parti del codice;
+        \item \textbf{\textit{components}}: Contiene tutti i componenti creati, che sono le unità riutilizzabili dell'interfaccia utente;
+        \item \textbf{\textit{hooks}}: Contiene i \textit{custom hooks} creati, che sono funzioni speciali di \textit{React} per gestire lo stato e altri effetti collaterali;
+        \item \textbf{\textit{interfaces}}: Contiene le interfacce create, che definiscono i tipi di dati utilizzati nel progetto;
+        \item \textbf{\textit{pages}}: Contiene le pagine vere e proprie, che rappresentano le diverse viste dell'applicazione, come la pagina di\textit{login} e la \textit{dashboard};
+        \item \textbf{\textit{routes}}: Contiene le routes del progetto, che definiscono la navigazione tra le diverse pagine e gestiscono l'autorizzazione;
+        \item \textbf{\textit{services}}: Contiene i servizi, in particolare quelli di autenticazione, che gestiscono la logica di \textit{business} e le chiamate \gls{api};
+        \item \textbf{\textit{app.tsx}}: Il file principale dell'applicazione che definisce la struttura generale e include i componenti principali;
+        \item \textbf{\textit{main.tsx}}: Il file di ingresso dell'applicazione che avvia \textit{React} e renderizza l'applicazione nel \textit{DOM};
+    \end{itemize}
+    \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
+    \item \textbf{\textit{tsconfig.json}}: Contiene le configurazioni di \textit{TypeScript}.
+\end{itemize}
+
+\pagebreak
+
+\noindent Vado ora a descrivere le pagine implementate nel \gls{frontend} dell'applicazione, con una panoramica approfondita delle loro funzionalità, dei loro dettagli implementativi e delle interazioni con il \gls{backend}.
+
+\subsubsection{Pagina di \textit{Login}}
+La pagina di \textit{login} rappresenta la prima pagina con cui gli utenti interagiscono.\\
+È stata progettata per garantire un'esperienza utente semplice e intuitiva, rispettando al contempo elevati standard di sicurezza.
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La pagina presenta un \textit{form} composto da due campi: \textit{email} e \textit{password}.\\
+    I dati inseriti sono sottoposti a validazione lato \textit{client} utilizzando la libreria \textit{Zod} per assicurare che rispettino il formato previsto (ad esempio, che l'\textit{email} sia valida e che la \textit{password} soddisfi determinati requisiti di complessità). \\
+    Sono inoltre implementati messaggi di errore per informare l'utente in caso di credenziali errate o di campi mancanti.
+    \item \textbf{Interazione con il \gls{backend}}: Una volta completata la validazione lato \textit{client}, i dati vengono inviati al servizio di autenticazione \textit{AWS Cognito} tramite una chiamata \gls{api}, se le credenziali risultatno corrette viene restituito \gls{jwtg} che viene memorizzato nel \textit{local storage} del \textit{browser} per gestire la sessione utente. \\
+    In caso di errore, la pagina notifica l'utente mostrando messaggi specifici.
+\end{itemize}
+
+\begin{lstlisting}[caption={Funzione di \textit{login} nel \gls{frontend}}]
+    const login = async (email: string, password: string): Promise<void> => {
+        try {
+          const cognitoUser: SignInOutput | undefined = await auth.login(
+            email,
+            password,
+          );
+          if (cognitoUser !== undefined) {
+            setUser(cognitoUser);
+            if (
+              cognitoUser.nextStep.signInStep ===
+              'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED'
+            ) {
+              setNewPasswordChallenge(true);
+            } else {
+              showSnackbar({message: "Login successful!", severity: "success"});
+              navigate("/dashboard");
+            }
+          }
+        } catch (err) {
+          showSnackbar({message: "The email and/or password are incorrect", severity: "error"});
+        }
+      };
+    \end{lstlisting}
+
+\subsubsection{Dashboard: Lista Progetti e Bozze}
+La \textit{dashboard} è il fulcro dell'applicazione, fornendo una panoramica completa dei progetti creati e delle bozze salvate dall'utente. È progettata per essere intuitiva e altamente funzionale.
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La \textit{dashboard} è divisa in due sezioni principali. La prima mostra i progetti completati, con dettagli come il nome del progetto, la data di creazione e lo stato. La seconda sezione è dedicata alle bozze, consentendo di riprendere un progetto incompleto in qualsiasi momento. Ogni elemento nella lista presenta azioni rapide come modifica, eliminazione o visualizzazione. Sono implementate funzionalità di ricerca e filtri avanzati per facilitare la gestione di un gran numero di progetti.
+    \item \textbf{Interazione con il \gls{backend}}: Al caricamento della pagina, una chiamata API \textit{GET} recupera i dati dal \gls{backend}, utilizzando l'ID dell'utente per filtrare i risultati. Le operazioni di modifica o eliminazione inviano richieste API \textit{PUT} o \textit{DELETE}, aggiornando immediatamente la lista visibile all'utente.
+\end{itemize}
+
+\subsubsection{Pagina di Creazione di un Progetto}
+Questa pagina consente agli utenti di creare nuovi progetti fornendo tutte le informazioni necessarie o, in alternativa, di salvare una bozza per completare il lavoro successivamente. 
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La pagina include un \textit{form} dinamico che guida l'utente attraverso l'inserimento di informazioni chiave come il nome del progetto, la descrizione, l'ambito di applicazione e le tecnologie utilizzate. Durante l'inserimento, viene effettuata una validazione lato client per assicurarsi che tutti i campi obbligatori siano compilati e che i dati forniti rispettino i formati richiesti. L'utente ha la possibilità di salvare il progetto come bozza o di inviarlo per la creazione definitiva. La pagina presenta anche messaggi di conferma per garantire un feedback immediato all'utente.
+    \item \textbf{Interazione con il \gls{backend}}: Una volta inviati, i dati vengono trasmessi tramite API \textit{RESTful} al \gls{backend}, che li elabora e li salva nel database. In caso di salvataggio come bozza, i dati parziali vengono marcati con uno stato specifico per permetterne il recupero futuro.
+\end{itemize}
+
+\subsubsection{Pagina di Dettaglio Progetto}
+Questa pagina fornisce una vista approfondita di un singolo progetto o bozza, mostrando tutte le informazioni associate e consentendo di accedere al documento PDF generato.
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La pagina presenta dettagli completi del progetto, inclusi nome, descrizione, tecnologie utilizzate, stato attuale e data di creazione. È presente un pulsante che consente di visualizzare il PDF generato direttamente all'interno di un visualizzatore integrato oppure di scaricarlo per un utilizzo offline. Inoltre, la pagina permette di modificare i dati del progetto o di eliminarlo, offrendo un controllo completo all'utente.
+    \item \textbf{Interazione con il \gls{backend}}: All'apertura della pagina, una chiamata API \textit{GET} recupera i dettagli del progetto dal database utilizzando l'ID fornito come parametro nell'URL. Il PDF, generato precedentemente nel \textit{backend}, è reso disponibile tramite un URL fornito da \textit{AWS S3}, garantendo sicurezza e velocità di accesso. Le modifiche o eliminazioni inviano richieste API \textit{PUT} o \textit{DELETE}, aggiornando il progetto nel database e riflettendo immediatamente i cambiamenti nella \textit{dashboard}.
+\end{itemize}
+
+\noindent Le pagine descritte sono state progettate con attenzione ai dettagli per garantire un'interfaccia utente intuitiva, un'esperienza fluida e una perfetta integrazione con il \textit{backend}, rispettando i requisiti funzionali e le migliori pratiche di sviluppo.
