@@ -1,0 +1,29 @@
+\subsection{\textit{Best practices}}
+\label{sez:best-practices}
+
+Durante la fase di sviluppo del progetto ho adottato diverse \textit{best practices} di codifica, tra cui:
+
+\begin{itemize}
+    \item \textbf{\textit{Arrow Functions}}: Utilizzo consistente delle \textit{arrow functions} per una sintassi più concisa e un \textit{binding} più chiaro del \texttt{this}:
+    \begin{verbatim}
+    const add = (a, b) => a + b;
+     \end{verbatim}
+    \item \textbf{Convenzioni di \textit{naming}}: 
+    \begin{itemize}
+        \item \textit{PascalCase} per la definizione dei \textit{file ReactJs} e \textit{NestJs};
+        \item \textit{camelCase} per variabili e funzioni;
+        \item \textit{UPPER\_CASE} per le costanti.
+    \end{itemize}
+
+    \item \textbf{Creazione di un \textit{file .tsx} per ogni componente \textit{ReactJs}}:\\
+    Questo approccio facilita i cambiamenti senza dover modificare il codice in più file. 
+    Ogni componente \textit{ReactJs} ha il proprio \textit{file .tsx}, migliorando la modularità e la manutenibilità del codice.\\
+    Ad esempio, un componente ‘\textit{SnackBar}‘ sarà definito in \textit{SnackBar.tsx}‘;
+    
+    \item \textbf{Utilizzo di \gls{git-flow}}: Struttura di \textit{branching} per una gestione più efficiente del ciclo di vita del software.\\
+    Ampiamente discussa nella {\hyperref[subsec:vincoli-organizzativi]{Sezione 2.5.2}} relativa ai vincoli organizzativi;
+
+    \item \textbf{\textit{Code Review}}: Ogni modifica al codice deve essere sottoposta a \textit{code review} da parte di un altro membro del \textit{team}.\\
+    Questo processo aiuta a individuare errori, migliorare la qualità del codice e condividere conoscenze tra i membri del \textit{team};    
+\end{itemize}
+
