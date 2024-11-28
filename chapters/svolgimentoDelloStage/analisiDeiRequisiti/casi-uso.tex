@@ -63,7 +63,7 @@
     \begin{enumerate}
         \item L'utente accede alla \textit{dashboard} del sistema;
         \item Il sistema recupera e visualizza la lista di tutti i progetti disponibili;
-        \item L'utente può vedere il nome, la data di creazione ed il preset usato per la generazione dei progetti.
+        \item L'utente può vedere il nome, la data di creazione ed il \textit{preset} usato per la generazione dei progetti.
     \end{enumerate}
 \end{itemize}
 
@@ -72,7 +72,7 @@
 \begin{itemize}
     \item \textbf{Attori}: Utente autenticato;
     \item \textbf{Descrizione}: L'utente cerca e filtra i progetti utilizzando specifici criteri;
-    \item \textbf{Precondizioni}: L'utente è autenticato e si trova nella dashboard di sistema;
+    \item \textbf{Precondizioni}: L'utente è autenticato e si trova nella \textit{dashboard} di sistema;
     \item \textbf{Postcondizioni}: I progetti che soddisfano i criteri di ricerca e/o filtro vengono visualizzati;
     \item \textbf{Flusso principale}:
     \begin{enumerate}
@@ -149,7 +149,7 @@
         \item L'utente accede alla \textit{dashboard} del sistema;
         \item L'utente seleziona il pulsante di visualizzazione della lista di bozze;
         \item Il sistema recupera e visualizza la lista di tutte le bozze disponibili;
-        \item L'utente può vedere il nome, la data di creazione ed il preset utilizzato per ogni bozza.
+        \item L'utente può vedere il nome, la data di creazione ed il \textit{preset} utilizzato per ogni bozza.
     \end{enumerate}
 \end{itemize}
 
@@ -234,7 +234,7 @@
     \item \textbf{Flusso principale}:
     \begin{enumerate}
         \item L'utente seleziona il pulsante di rigenerazione completa del progetto;
-        \item Il sistema richiede all'utente l'inserimento di un prompt su cui si baserà la rigenerazione;
+        \item Il sistema richiede all'utente l'inserimento di un \gls{prompt} su cui si baserà la rigenerazione;
         \item L'utente richiede la rigenerazione del progetto;
         \item Il sistema invia la richiesta di rigenerazione al \gls{llm};
         \item Il \gls{llm} rigenera completamente il progetto;
@@ -259,7 +259,7 @@
     \item \textbf{Flusso principale}:
     \begin{enumerate}
         \item L'utente seleziona il capitolo da rigenerare;
-        \item Il sistema richiede all’utente l’inserimento di un \textit{prompt} su cui si baserà la rigenerazione;
+        \item Il sistema richiede all’utente l’inserimento di un \gls{prompt} su cui si baserà la rigenerazione;
         \item L’utente richiede la rigenerazione del capitolo;
         \item Il sistema invia la richiesta di rigenerazione al \gls{llm} per il capitolo selezionato;
         \item Il \gls{llm} rigenera solo il capitolo selezionato;
