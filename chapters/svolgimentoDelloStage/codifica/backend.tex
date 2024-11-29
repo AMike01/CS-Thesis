@@ -65,14 +65,16 @@ Grazie a \textit{LangChain}, è possibile gestire in modo efficace le interazion
 
 \begin{lstlisting}[caption={Dichiarazione \gls{llm} e sua invocazione}, label={lst:funzione-generazione-progetto}]
 private readonly llm: ChatBedrockConverse;
-  constructor() {  // declare the LLM
+  constructor() {  
+    // declare the LLM
     this.llm = new ChatBedrockConverse({
       model: "anthropic.claude-3-5-sonnet-20241022-v1:5",
       temperature: 0.3,
       topP: 0.9,
       maxTokens: 4096,
       region: "eu-central-1",
-      credentials: fromIni({ profile: "dev" }), // AWS credentials
+      // AWS credentials
+      credentials: fromIni({ profile: "dev" }), 
     });
   }
   async generateProject(
@@ -82,12 +84,16 @@ private readonly llm: ChatBedrockConverse;
   ): Promise<CreateProjectDTO> {
 
     try {
-      const structuredLlm = this.llm.withStructuredOutput(ProjectSchema); // Define the output schema
-      const response = await structuredLlm.invoke(prompt); // Invoke the LLM
+      // Define the output schema
+      const structuredLlm = this.llm.withStructuredOutput(ProjectSchema); 
+      // Invoke the LLM
+      const response = await structuredLlm.invoke(prompt); 
       const result : CreateProjectDTO = response;
 
-      result.promptId = promptId; // Assign the promptId
-      result.projectId = projectId;  // Assign the projectId
+      // Assign the promptId
+      result.promptId = promptId; 
+      // Assign the projectId
+      result.projectId = projectId; 
 
       return result;
     } catch (error) {
@@ -192,29 +198,33 @@ return JSON.stringify(result);
 \end{lstlisting}
 \subsection*{\texttt{/pdf}}
 L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF a partire dai progetti creati.\\
-Una volta ricevuto un progetto generato, l’\textit{endpoint} utilizza \textit{Puppeteer}, una libreria per l’elaborazione di documenti, per trasformare i dati in un \textit{file} PDF ben formattato e leggibile, tramite l'utilizzo di un \textit{template} \gls{html} predefinito.\\
+Una volta ricevuto un progetto generato, l’\textit{endpoint} utilizza \textit{Puppeteer}, una libreria per l’elaborazione di documenti, per trasformare i dati in un \textit{file} PDF ben formattato e leggibile, tramite l'utilizzo di un \textit{template} \gls{html} predefinito, che viene popolato tramite la libreria \textit{HandleBars}.\\
 
-Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
-Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco. 
+\noindent Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
+Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco.\\ 
 
-\noindent All'interno della {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.6}} è possibile osservare la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF su \textit{AWS S3}.
+\noindent All'interno della {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.6}} è possibile osservare la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF generato su \textit{AWS S3}.
 \begin{lstlisting}[caption={Funzione di generazione del PDF, con salvataggio su \textit{AWS S3}}, label={lst:funzione-generazione-pdf}]
 async generatePdf(user: User, project: Project): Promise<string> {
-    const content = await this.populateTemplate(project); // Populate the HTML template
-    const browser: Browser = await this.getBrowser();  // Get the browser instance
+    // Populate the HTML template    
+    const content = await this.populateTemplate(project);  
+    // Get the browser instance
+    const browser: Browser = await this.getBrowser(); 
 
     const page: Page = await browser.newPage();
-    await page.setContent(content); // Set the content of the page
+    // Set the content of the page
+    await page.setContent(content); 
 
     try {
+      // Generate the PDF
       const pdfBuffer: Uint8Array = await page.pdf({
         format: "A4",
         printBackground: true,
-      });
-
-      this.savePdf(user, pdfBuffer, project.projectId, project.projectName, project.version);  // Save the PDF on AWS S3
-      return this.getSignedUrl(user, project.projectId, project.projectName, project.version); // Return the signed URL to the frontend
-
+      }); 
+      // Save the PDF on AWS S3
+      this.savePdf(user, pdfBuffer, project.projectId, project.projectName, project.version);  
+      // Return the signed URL to the frontend
+      return this.getSignedUrl(user, project.projectId, project.projectName, project.version);
     } catch (error) {
       throw new Error("Failed to generate PDF");
     } finally {
