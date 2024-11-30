@@ -4,15 +4,11 @@
 La struttura della \textit{repository} \gls{backend} è la seguente:
 
 \begin{itemize}
-    \item \textbf{\textit{src}}: Contiene le seguenti cartelle organizzate per funzionalità:
+    \item \textbf{\textit{src}}: Contiene varie cartelle organizzate per funzionalità, tra cui:
     \begin{itemize}
         \item \textbf{\textit{auth}}: Contiene i \textit{middleware} per l'autenticazione delle \gls{api};
         \item \textbf{\textit{aws-bedrock}}: Contiene la logica della generazione dei progetti;
-        \item \textbf{\textit{draft-presets}}: Contiene la logica per il salvataggio, recupero ed eliminazione delle bozze;
         \item \textbf{\textit{pdf}}: Contiene la logica per la generazione e salvataggio su \textit{AWS S3} dei documenti PDF;
-        \item \textbf{\textit{project}}: Contiene la logica per il salvataggio, recupero ed eliminazione dei progetti;
-        \item \textbf{\textit{prompt}}: Contiene la logica per il salvataggio, creazione ed eliminazione dei \gls{prompt};
-        \item \textbf{\textit{preset}}: Contiene la logica per il salvataggio, creazione ed eliminazione dei \textit{preset};
         \item \textbf{\textit{utils}}: Contiene tutti i \textit{mock} utili per il \textit{testing} o funzioni di supporto globale.
     \end{itemize}
     \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
@@ -29,29 +25,10 @@ La struttura della \textit{repository} \gls{backend} è la seguente:
     \item i \textit{test} dei \textit{controller} e dei \textit{service}.
 \end{itemize}
 
-\pagebreak
-
-\subsubsection{Autenticazione tramite \gls{jwt} e \textit{Middleware}}
-
-Il \gls{frontend} dell'applicazione allega un \gls{jwtg} insieme ad ogni richiesta al \gls{backend}.\\
-Questo \textit{token}, generato al momento dell'autenticazione dell'utente tramite \textit{AWS Cognito}, viene inserito nell'intestazione della richiesta (\textit{header}) sotto la chiave \texttt{Authorization}.\\
-Il \gls{backend} utilizza un \textit{middleware} di autenticazione dedicato per verificare la validità del \textit{token} ed autorizzare l'accesso alle risorse protette.\\
-
-\noindent Il \textit{middleware} svolge le seguenti operazioni:
-\begin{itemize}
-    \item Estrae il \textit{token} \gls{jwt} dall'intestazione della richiesta;
-    \item Verifica che il \textit{token} sia valido e non scaduto, utilizzando la chiave pubblica di \textit{AWS Cognito};
-    \item Decodifica il \textit{token} per estrarre le informazioni sull'utente, come l'\textit{ID} e il ruolo, e le passa al contesto della richiesta per l'utilizzo nelle \gls{api};
-    \item Rifiuta richieste non autorizzate, restituendo una risposta con codice di stato \texttt{401 Unauthorized}.
-\end{itemize}
-
 \subsubsection{\textit{Endpoints} delle \gls{api}}
 
 Il sistema implementa diversi \textit{endpoints} per gestire le operazioni richieste dal \gls{frontend}.\\
-Gli \textit{endpoints} relativi alle risorse \texttt{/projects}, \texttt{/presets} e \texttt{/draft-presets} si concentrano su operazioni standard di tipo \textit{CRUD} (\textit{Create}, \textit{Read}, \textit{Update}, \textit{Delete}).\\
-Questi \textit{endpoints} consentono di creare, leggere, aggiornare o eliminare progetti, preset e bozze dal database, mantenendo una gestione centralizzata dei dati. Tuttavia, per la loro natura semplice e ripetitiva, non presentano aspetti tecnici particolarmente complessi o innovativi.\\
-
-\noindent Di seguito vengono approfonditi gli \textit{endpoints} che implementano funzionalità più avanzate, offrendo interazioni significative tra il \gls{frontend}, il \gls{backend} e i servizi esterni.
+Di seguito vengono approfonditi gli \textit{endpoints} che implementano le funzionalità più avanzate, offrendo interazioni significative tra il \gls{frontend}, il \gls{backend} e i servizi esterni.
 
 \subsection*{\texttt{/aws-bedrock}}
 L’\textit{endpoint} \texttt{/aws-bedrock} è progettato per gestire la generazione automatica dei progetti sfruttando le capacità di \textit{AWS Bedrock}.\\
@@ -61,7 +38,7 @@ La sua funzione principale è quella di orchestrare la comunicazione tra il sist
 L’output strutturato è un formato predefinito, progettato per essere validato, assicurando che i dati siano conformi alle aspettative del sistema prima di essere restituiti al \gls{frontend}.\\
 Grazie a \textit{LangChain}, è possibile gestire in modo efficace le interazioni con il \gls{llm}, costruendo flussi dati modulari e scalabili che riducono gli errori di interpretazione e aumentano l’affidabilità complessiva.\\
 
-\noindent All'interno della {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.3}} è possibile osservare la dichiarazione della \gls{llm} e la funzione di generazione dei progetti implementata nel \textit{service}, che si occupa di invocare il modello di linguaggio e restituire il risultato al \gls{frontend}.
+\noindent La {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.3}} mostra la dichiarazione della \gls{llm} e la funzione di generazione dei progetti implementata nel \textit{service}, che si occupa di invocare il modello di linguaggio e restituire il risultato al \gls{frontend}.
 
 \begin{lstlisting}[caption={Dichiarazione \gls{llm} e sua invocazione}, label={lst:funzione-generazione-progetto}]
 private readonly llm: ChatBedrockConverse;
@@ -104,108 +81,11 @@ private readonly llm: ChatBedrockConverse;
   }
 \end{lstlisting}
 \pagebreak
-\noindent All'interno della {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.4}} è possibile osservare una sezione dello schema creato tramite la libreria \textit{Zod}, da notare che ogni campo dello schema ha un tipo ed una descrizione associata. 
-
-\begin{lstlisting}[caption={Schema \textit{Zod} dell'output dell'\gls{llm}}, label={lst:schema-zod}]
-const IntroductionSchema = z.object({
-  scopeOfDocument: z.string().describe("Scope of the document"),
-  projectBackground: z.string().describe("Background of the project"),
-  objectives: z.array(z.string()).describe("Objectives of the project"),
-});
-
-const ProjectScopeSchema = z.object({
-  featuresAndFunctionalities: z
-    .array(z.string())
-    .describe("Features and functionalities of the project"),
-  deliverables: z
-    .array(z.string())
-    .describe("Deliverables expected from the project"),
-});
-
-const DesignSchema = z.object({
-  uxUiDesign: z.string().describe("Description about the UX/UI design choices"),
-  keyDesignElements: z
-    .array(z.string())
-    .describe("Key design elements of the project"),
-});
-......
-
-const ProjectSchema = z.object({
-  projectName: z.string().describe("Name of the project"),
-  projectDescription: z.string().describe("Short description of the project"),
-  introduction: IntroductionSchema.describe(
-    "Introduction section of the project"
-  ),
-  projectScope: ProjectScopeSchema.describe("Scope of the project"),
-  design: DesignSchema.describe("Design details of the project"),
-  ......
-});
-\end{lstlisting}
-
-\subsection*{\texttt{/prompt}}
-L’\textit{endpoint} \gls{prompt} si occupa di generare dinamicamente il \gls{prompt} che verrà utilizzato dall’\texttt{/aws-bedrock} per creare i progetti.\\
-Questo \textit{endpoint} rappresenta un punto cruciale del sistema, poiché traduce i dati grezzi forniti dal \gls{frontend} in un formato strutturato e leggibile per il modello di linguaggio.\\ 
-
-\noindent La generazione del \gls{prompt} avviene in modo statico, tramite il set di domande (\textit{preset}) inserite dall'utente. Questo approccio garantisce che i risultati del modello siano coerenti con le aspettative dell'utente, basandosi su un formato predefinito e strutturato.\\
-
-\noindent All'interno della {\hyperref[lst:funzione-prompt]{\textit{Listing} 3.5}} è possibile osservare la funzione di generazione del \gls{prompt} implementata nel \textit{service}, a partire dai dati forniti dal \gls{frontend}.\\
-Si noti la differenza tra \texttt{optionalInfo} e \texttt{additionalPrompt}, il primo è un campo opzionale che può essere fornito dall'utente la prima volta che va a generare un progetto, mentre il secondo è un \gls{prompt} aggiuntivo fornito dall'utente durante la rigenerazione del progetto.
-
-\begin{lstlisting}[caption={Funzione di costruzione del \gls{prompt}}, label={lst:funzione-prompt}]
-async constructPrompt(prompt: Prompt, additionalPrompt?: string): Promise<string> {
-const result = [
-    [
-    "system",
-    "You are a IT project manager that creates detailed project plans.",
-    ],
-    [
-    "human",
-    "Based on the following project details, generate a detailed project plan. Make sure to call the ProjectSchema function and return a JSON object containing all the fields of the Project Schema.",
-    ],
-    ["human", `The project is called "${prompt.projectName}".`],
-    [
-    "human",
-    "Here are the key details for the project in a Question/Answer format:",
-    ],
-    ...prompt.answers.map((answer, i) => ({
-    role: "human",
-    content: `${i + 1}. Question: "${answer.question}\n", Answer: "${answer.answer}"`,
-    })),
-    ...(prompt.optionalInfo
-    ? [
-        {
-            role: "human",
-            content: `And this is some additional information for the project: ${prompt.optionalInfo}.`,
-        },
-        ]
-    : []),
-    {
-    role: "human",
-    content:
-    "Please generate a comprehensive project plan based on the details provided above. 
-    Ensure that every field in the JSON structure is thoroughly described with precise and detailed information. 
-    Include specific insights, objectives, and methodologies to create a robust and actionable plan.",
-    },
-    ...(additionalPrompt
-    ? [
-        {
-            role: "human",
-            content: `Include also this information during the generation of the project: ${additionalPrompt}.`,
-        },
-        ]
-    : []),
-];
-return JSON.stringify(result);
-      }
-\end{lstlisting}
 \subsection*{\texttt{/pdf}}
-L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF e del loro salvataggio su \textit{AWS S3} a partire dai progetti creati.\\
-Una volta ricevuto un progetto generato, l’\textit{endpoint} utilizza \textit{Puppeteer} per trasformare i dati in un \textit{file} PDF ben formattato e leggibile, tramite l'utilizzo di un \textit{template} \gls{html} predefinito, che viene popolato tramite la libreria \textit{HandleBars}.\\
-
-\noindent Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
+L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF e del loro salvataggio su \textit{AWS S3} a partire dai progetti creati; esso svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
 Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco.\\ 
 
-\noindent All'interno della {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.6}} è possibile osservare la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF generato su \textit{AWS S3}.
+\noindent La {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.6}} mostra la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF generato su \textit{AWS S3}.
 \begin{lstlisting}[caption={Funzione di generazione del PDF, con salvataggio su \textit{AWS S3}}, label={lst:funzione-generazione-pdf}]
 async generatePdf(user: User, project: Project): Promise<string> {
     // Populate the HTML template    
