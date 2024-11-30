@@ -1,19 +1,49 @@
 \section{Risultati ottenuti}
 \label{sez:risultati-ottenuti}
 
-
-\subsection{Prodotto realizzato}
-\label{subsec:prodotto-realizzato}
-
-Screenshots del prodotto realizzato, spiegazione delle funzionalità implementate viste dal lato utente (in 'black-box').
-
+\input{chapters/svolgimentoDelloStage/risultatiOttenuti/prodotto-realizzato.tex}
+\pagebreak
 \subsection{Copertura dei requisiti}
 \label{subsec:copertura-requisiti}
 
-Descrizione della copertura dei requisiti individuati durante l'analisi dei requisiti, quali sono stati soddisfatti, quali no, ecc.
+Tutti i requisiti funzionali, non funzionali e tecnologici, ad eccezione di quelli esplicitamente indicati in seguito, sono stati pienamente soddisfatti.\\
+Ogni funzione richiesta dal progetto è stata implementata e testata con successo, garantendo il rispetto dell'analisi dei requisiti iniziale.
+
+\subsubsection{Requisito RFF-19: Rimozione di capitoli non necessari}
+\noindent Il requisito RFF-19, relativo alla possibilità di rimuovere capitoli non necessari dal progetto, non è stato implementato.\\
+Tale funzionalità è stata esclusa dalla versione attuale del sistema a causa di limitazioni tecniche e di priorità durante il ciclo di sviluppo.
+
+\subsubsection{Requisito RNFO-1: Tempi di generazione inferiori a 30 Secondi}
+\noindent Il requisito RNFO-1, che prevedeva tempi di generazione dei progetti inferiori a 30 secondi, non è stato soddisfatto.\\
+L'\gls{llm} scelto per la generazione dei progetti (\textit{Claude 3.5 Sonnet}) impiega in media circa 1 minuto e 20 secondi per completare il processo.\\
+Tuttavia, insieme al \textit{tutor} aziendale, si è concordato che tale tempistica fosse accettabile, considerando l'elevata qualità e il livello di dettaglio forniti dal modello.\\
+Una futura ottimizzazione delle prestazioni potrebbe ridurre ulteriormente questi tempi.
 
 \subsection{Materiali prodotti}
 \label{subsec:materiali-prodotti}
 
-Descrizione dei materiali prodotti durante il progetto, come il numero di linee di codice, numero di test implementati, il numero di documenti, il numero di file, ecc.\\
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{gray!15}{white} % Righe alternate: grigio chiaro e bianco
+    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \rowcolor{green!30} % Colore dell'intestazione: verde chiaro
+        \textbf{Metrica} & \textbf{Quantità} \\
+        \hline
+        \textbf{Documenti} & 2 \\
+        \hline
+        \textbf{Componenti \textit{React}} & 8 \\
+        \hline
+        \textbf{\gls{api}} & 12 \\
+        \hline
+        \textbf{Linee di codice} & 11.941 \\
+        \hline
+        \textbf{Numero di file} & 113 \\
+        \hline
+        \textbf{Test implementati} & 102 \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella dei materiali prodotti}
+    \label{tab:materiali-prodotti}
+\end{table}
 

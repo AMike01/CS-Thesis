@@ -8,15 +8,15 @@ Questa architettura è composta da tre livelli distinti: \textit{Presentation Ti
 
 \subsubsection{\textit{Presentation Tier}}
 
-\noindent Il \textit{Presentation Tier} rappresenta il livello di interfaccia utente (\textit{User Interface, UI}) del sistema,
-si occupa di ricevere \textit{input} dall'utente e di visualizzare i risultati forniti dal livello logico.\\
+\noindent Il \textit{Presentation Tier} rappresenta il livello di interfaccia utente (\gls{ui}) del sistema,
+essa si occupa di ricevere \textit{input} dall'utente e di visualizzare i risultati forniti dal livello logico.\\
 In questo progetto, ho implementato il \textit{Presentation Tier} utilizzando \textit{ReactJS}, che permette di creare interfacce reattive e modulari.
 
 \subsubsection{\textit{Logic Tier}} 
 
 \noindent Il \textit{Logic Tier}, o livello logico, è il cuore del sistema,
 si occupa di elaborare i dati, applicare la logica di \textit{business} e gestire le richieste provenienti dal \textit{Presentation Tier}.\\
-Per questa funzione, per implementare il \textit{Logic Tier} ho utilizzato \textit{NestJS}, un \textit{framework} modulare e basato su TypeScript, che mi ha permesso di sviluppare in modo efficiente la logica applicativa del sistema.
+Per questa funzione, per implementare il \textit{Logic Tier} ho utilizzato \textit{NestJS}, un \textit{framework} modulare e basato su \textit{TypeScript}, che mi ha permesso di sviluppare in modo efficiente la logica applicativa del sistema.
 
 \subsubsection{\textit{Data Tier}} 
 
@@ -101,8 +101,7 @@ Questo approccio facilita la creazione di applicazioni scalabili, manutenibili e
 La struttura di base di un'applicazione \textit{NestJS} è costituita da tre componenti principali: \textit{module}, \textit{controller} e \textit{service}. 
 
 \subsubsection{\textit{Modules}}
-I \textit{module} sono una delle fondamenta dell'architettura di \textit{NestJS}.\\
-Ogni modulo è un insieme di componenti (\textit{controller}, \textit{service}, \textit{provider}) che sono raggruppati insieme per gestire una parte specifica dell'applicazione.\\
+I \textit{module} sono un insieme di componenti (\textit{controller}, \textit{service}, \textit{provider}) che sono raggruppati insieme per gestire una parte specifica dell'applicazione.\\
 Un modulo in \textit{NestJS} consente di organizzare l'applicazione in sezioni logicamente separate, facilitando la gestione del codice e la sua estendibilità.
 
 \subsubsection{\textit{Controllers}}
@@ -126,13 +125,13 @@ Questo processo avviene automaticamente tramite il sistema di \gls{di} integrato
 
 \textit{NestJS} si ispira a diversi \textit{design pattern} che migliorano la modularità, la testabilità e la manutenibilità dell'applicazione.\\
 
-\noindent I due dei \textit{pattern} che ho utilizzato sono:
+\noindent I due \textit{pattern} che ho utilizzato sono:
 \begin{itemize}
     \item \textbf{\textit{Singleton Pattern}}: Garantisce che una classe abbia una sola istanza e fornisce un punto di accesso globale a questa istanza.\\
     In \textit{NestJS}, questo pattern è utilizzato all'interno dei \textit{services};
     grazie al sistema di \gls{dig} infatti, questi vengono istanziati una sola volta e condivisi in tutta l'applicazione.\\
     Questo approccio permette di ridurre il carico sulle risorse e assicura che i \textit{service} mantengano uno stato coerente durante l'esecuzione dell'applicazione;
-    \item \textbf{\gls{dto} \textit{Pattern}}: Viene usato trasferire dati tra sistemi o livelli di un'applicazione.\\
+    \item \textbf{\gls{dto} \textit{Pattern}}: Viene usato per trasferire dati tra sistemi o livelli di un'applicazione.\\
     In \textit{NestJS}, i \gls{dto} sono oggetti che definiscono la struttura dei dati che vengono inviati da e verso il \textit{controller}.\\
     I \gls{dto} vengono utilizzati per convalidare, formattare e tipizzare i dati, migliorando la sicurezza e la consistenza dei dati scambiati tra il \textit{client} e il \textit{server}. \\
     I \gls{dto} sono molto usati in \textit{NestJS} e sono una parte fondamentale della sua architettura. Vengono spesso utilizzati con librerie di validazione, come \textit{class-validator}, per assicurarsi che i dati rispettino determinati criteri prima di essere inviati ai \textit{services} o archiviati nel \textit{database}.\\

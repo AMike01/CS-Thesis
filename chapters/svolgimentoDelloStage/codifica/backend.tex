@@ -9,10 +9,10 @@ La struttura della \textit{repository} \gls{backend} è la seguente:
         \item \textbf{\textit{auth}}: Contiene i \textit{middleware} per l'autenticazione delle \gls{api};
         \item \textbf{\textit{aws-bedrock}}: Contiene la logica della generazione dei progetti;
         \item \textbf{\textit{draft-presets}}: Contiene la logica per il salvataggio, recupero ed eliminazione delle bozze;
-        \item \textbf{\textit{pdf}}: Contiene la logica per la generazione e salvataggio su \textit{AWS S3} dei progetti;
+        \item \textbf{\textit{pdf}}: Contiene la logica per la generazione e salvataggio su \textit{AWS S3} dei documenti PDF;
         \item \textbf{\textit{project}}: Contiene la logica per il salvataggio, recupero ed eliminazione dei progetti;
         \item \textbf{\textit{prompt}}: Contiene la logica per il salvataggio, creazione ed eliminazione dei \gls{prompt};
-        \item \textbf{\textit{preset}}: Contiene la logica dei \textit{preset};
+        \item \textbf{\textit{preset}}: Contiene la logica per il salvataggio, creazione ed eliminazione dei \textit{preset};
         \item \textbf{\textit{utils}}: Contiene tutti i \textit{mock} utili per il \textit{testing} o funzioni di supporto globale.
     \end{itemize}
     \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
@@ -20,12 +20,12 @@ La struttura della \textit{repository} \gls{backend} è la seguente:
 \end{itemize}
 
 \noindent Per ogni cartella all'interno di \textit{src} (ad esclusione delle cartelle \textbf{\textit{auth}} e \textbf{\textit{utils}}), si ha una struttura comune che include:
-\begin{itemize}
-    \item una cartella \textit{dto} contenente i \gls{dtog} relativa alla funzionalità;
-    \item una cartella \textit{schemas} contenente gli schema \gls{odmg} relativo all'entità gestita;
+\begin{itemize} 
+    \item una cartella \textit{dto} contenente i \gls{dtog} relativi alla funzionalità;
+    \item una cartella \textit{schemas} contenente lo schema \gls{odmg} relativo all'entità gestita;
     \item un \textit{controller} per la gestione delle richieste \gls{http};
     \item un \textit{module} per l'iniezione delle dipendenze;
-    \item un \textit{service} per la logica di \textit{business}.;
+    \item un \textit{service} per la logica di \textit{business};
     \item i \textit{test} dei \textit{controller} e dei \textit{service}.
 \end{itemize}
 
@@ -33,9 +33,9 @@ La struttura della \textit{repository} \gls{backend} è la seguente:
 
 \subsubsection{Autenticazione tramite \gls{jwt} e \textit{Middleware}}
 
-Il \gls{frontend} dell'applicazione invia un \gls{jwtg} insieme ad ogni richiesta al \gls{backend}.\\
+Il \gls{frontend} dell'applicazione allega un \gls{jwtg} insieme ad ogni richiesta al \gls{backend}.\\
 Questo \textit{token}, generato al momento dell'autenticazione dell'utente tramite \textit{AWS Cognito}, viene inserito nell'intestazione della richiesta (\textit{header}) sotto la chiave \texttt{Authorization}.\\
-Il \gls{backend} utilizza un \textit{middleware} di autenticazione dedicato per verificare la validità del \textit{token}.\\ 
+Il \gls{backend} utilizza un \textit{middleware} di autenticazione dedicato per verificare la validità del \textit{token} ed autorizzare l'accesso alle risorse protette.\\
 
 \noindent Il \textit{middleware} svolge le seguenti operazioni:
 \begin{itemize}
@@ -129,6 +129,7 @@ const DesignSchema = z.object({
     .describe("Key design elements of the project"),
 });
 ......
+
 const ProjectSchema = z.object({
   projectName: z.string().describe("Name of the project"),
   projectDescription: z.string().describe("Short description of the project"),
@@ -146,6 +147,7 @@ L’\textit{endpoint} \gls{prompt} si occupa di generare dinamicamente il \gls{p
 Questo \textit{endpoint} rappresenta un punto cruciale del sistema, poiché traduce i dati grezzi forniti dal \gls{frontend} in un formato strutturato e leggibile per il modello di linguaggio.\\ 
 
 \noindent La generazione del \gls{prompt} avviene in modo statico, tramite il set di domande (\textit{preset}) inserite dall'utente. Questo approccio garantisce che i risultati del modello siano coerenti con le aspettative dell'utente, basandosi su un formato predefinito e strutturato.\\
+
 \noindent All'interno della {\hyperref[lst:funzione-prompt]{\textit{Listing} 3.5}} è possibile osservare la funzione di generazione del \gls{prompt} implementata nel \textit{service}, a partire dai dati forniti dal \gls{frontend}.\\
 Si noti la differenza tra \texttt{optionalInfo} e \texttt{additionalPrompt}, il primo è un campo opzionale che può essere fornito dall'utente la prima volta che va a generare un progetto, mentre il secondo è un \gls{prompt} aggiuntivo fornito dall'utente durante la rigenerazione del progetto.
 
@@ -197,8 +199,8 @@ return JSON.stringify(result);
       }
 \end{lstlisting}
 \subsection*{\texttt{/pdf}}
-L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF a partire dai progetti creati.\\
-Una volta ricevuto un progetto generato, l’\textit{endpoint} utilizza \textit{Puppeteer}, una libreria per l’elaborazione di documenti, per trasformare i dati in un \textit{file} PDF ben formattato e leggibile, tramite l'utilizzo di un \textit{template} \gls{html} predefinito, che viene popolato tramite la libreria \textit{HandleBars}.\\
+L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF e del loro salvataggio su \textit{AWS S3} a partire dai progetti creati.\\
+Una volta ricevuto un progetto generato, l’\textit{endpoint} utilizza \textit{Puppeteer} per trasformare i dati in un \textit{file} PDF ben formattato e leggibile, tramite l'utilizzo di un \textit{template} \gls{html} predefinito, che viene popolato tramite la libreria \textit{HandleBars}.\\
 
 \noindent Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
 Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco.\\ 

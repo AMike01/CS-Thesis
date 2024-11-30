@@ -3,18 +3,18 @@
 
 La scelta delle tecnologie utilizzate nel progetto è stata in gran parte imposta dall'azienda.\\
 In particolare, l'azienda ha imposto l'adozione di \textit{ReactJS} come \textit{framework} per il \gls{frontend}, di \textit{NestJS} per il \gls{backend} e di \textit{MongoDB} come \textit{database}.\\
-Queste scelte sono state motivate da una serie di considerazioni interne, tra cui la familiarità con le tecnologie e la loro capacità di soddisfare le esigenze di scalabilità e manutenibilità del progetto.\\
+Queste scelte sono state motivate da una serie di considerazioni interne, tra cui la familiarità aziendale con le tecnologie e la loro capacità di soddisfare le esigenze di scalabilità e manutenibilità del progetto.\\
 
 \noindent Inoltre, l'azienda ha imposto l'utilizzo di una serie di servizi \gls{aws} per la gestione dell'autenticazione, la generazione dei progetti e il salvataggio dei documenti.\\
 Questi sono stati ampiamente discussi nella {\hyperref[sez:tecnologie-sviluppo]{Sezione 1.4}} relativa alle tecnologie di sviluppo.
 
 \subsubsection{Utilizzo di \textit{LangChain} per la generazione dei progetti}
 
-Inizialmente, avevo di utilizzare le \gls{api} standard di \textit{AWS Bedrock} per la generazione dei progetti, ma in una prima iterazione di sviluppo non è stato possibile creare i \textit{mockup} di \textit{Bedrock} necessari per il \textit{testing}.\\
+Inizialmente, avevo deciso di utilizzare le \gls{api} standard di \textit{AWS Bedrock} per la generazione dei progetti, ma in una prima iterazione di sviluppo non è stato possibile creare i \textit{mockup} di \textit{Bedrock} necessari per il \textit{testing}.\\
 
 \noindent Avendo sviluppato solamente una versione iniziale della funzione di generazione dei progetti, per superare questa difficoltà, ho deciso di impiegare \textit{LangChain}, una libreria che fornisce un'interfaccia più flessibile per interagire con modelli linguistici come quelli di \textit{AWS Bedrock}.\\
 
-\noindent La scelta di \textit{LangChain} è stata motivata anche dal fatto che essa consente di ottenere un \textit{output strutturato}, che garantisce risultati più costanti e prevedibili rispetto alle risposte meno formattate ottenute tramite le \gls{api} di \textit{Bedrock}.\\
+\noindent La scelta di \textit{LangChain} è stata motivata anche dal fatto che essa consente di imporre un \textit{output strutturato} all'\gls{llm}, che permette quindi di garantire risultati più costanti e prevedibili rispetto alle risposte meno formattate ottenute tramite le \gls{api} di \textit{Bedrock}.\\
 
 \noindent Questa scelta ha migliorato la gestione dei dati e la qualità dei progetti generati, facilitando la creazione di un flusso di lavoro più stabile.
 

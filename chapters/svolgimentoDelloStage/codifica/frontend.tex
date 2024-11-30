@@ -11,14 +11,14 @@ La struttura della \textit{repository} \gls{frontend} è la seguente:
         \item \textbf{\textit{components}}: Contiene tutti i componenti creati, che sono le unità riutilizzabili dell'interfaccia utente;
         \item \textbf{\textit{hooks}}: Contiene i \textit{custom hooks} creati, che sono funzioni speciali di \textit{React} per gestire lo stato e altri effetti collaterali;
         \item \textbf{\textit{interfaces}}: Contiene le interfacce create, che definiscono i tipi di dati utilizzati nel progetto;
-        \item \textbf{\textit{pages}}: Contiene le pagine vere e proprie, che rappresentano le diverse viste dell'applicazione, come la pagina di\textit{login} e la \textit{dashboard};
-        \item \textbf{\textit{routes}}: Contiene le routes del progetto, che definiscono la navigazione tra le diverse pagine e gestiscono l'autorizzazione;
+        \item \textbf{\textit{pages}}: Contiene le pagine vere e proprie, che rappresentano le diverse viste dell'applicazione, come la pagina di \textit{login} e la \textit{dashboard};
+        \item \textbf{\textit{routes}}: Contiene le \textit{routes} del progetto, che definiscono la navigazione tra le diverse pagine e gestiscono l'autorizzazione;
         \item \textbf{\textit{services}}: Contiene i servizi, in particolare quelli di autenticazione, che gestiscono la logica di \textit{business} e le chiamate \gls{api};
-        \item \textbf{\textit{app.tsx}}: Il file principale dell'applicazione che definisce la struttura generale e include i componenti principali;
-        \item \textbf{\textit{main.tsx}}: Il file di ingresso dell'applicazione che avvia \textit{React} e renderizza l'applicazione nel \textit{DOM};
+        \item \textbf{\textit{app.tsx}}: Il \textit{file} principale dell'applicazione che definisce la struttura generale e include i componenti principali;
+        \item \textbf{\textit{main.tsx}}: Il \textit{file} di ingresso dell'applicazione che avvia \textit{React} e renderizza l'applicazione nel \textit{DOM};
     \end{itemize}
     \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
-    \item \textbf{\textit{tsconfig.json}}: Contiene le configurazioni di \textit{TypeScript}.
+    \item \textbf{\textit{tsconfig.json}}: Contiene le configurazioni del compilatore \textit{TypeScript}.
 \end{itemize}
 
 \noindent Vado ora a descrivere le pagine che ho implementato nel \gls{frontend} dell'applicazione, con una panoramica delle loro funzionalità e delle loro interazioni con il \gls{backend}.
@@ -67,7 +67,7 @@ La \textit{dashboard} è il fulcro dell'applicazione, fornendo una panoramica co
     \item \textbf{Funzionalità principali}: La \textit{dashboard} è divisa in due sezioni principali.\\
     La prima mostra i progetti generati, con dettagli come il nome del progetto e la data di creazione. La seconda sezione è dedicata alle bozze, consentendo di riprendere un \textit{preset} incompleto in qualsiasi momento.\\
     Sono implementate funzionalità di ricerca e filtri per facilitare la gestione di un gran numero di progetti e/o bozze;
-    \item \textbf{Interazione con il \gls{backend}}: Al caricamento della pagina, una chiamata \gls{api} \textit{GET} recupera i progetti dal \gls{backend}, utilizzando l'ID dell'utente per filtrare i risultati.
+    \item \textbf{Interazione con il \gls{backend}}: Al caricamento della pagina, una chiamata \gls{api} \textit{GET} recupera i progetti  e le bozze dal \gls{backend}, utilizzando l'ID dell'utente per filtrare i risultati.
 \end{itemize}
 
 \subsubsection{Pagina di creazione di un progetto}
@@ -83,7 +83,7 @@ Questa pagina consente agli utenti di creare nuovi progetti fornendo tutte le in
 Questa pagina fornisce una vista approfondita di un singolo progetto, mostrando tutte le informazioni associate e consentendo di accedere al documento PDF generato.
 \begin{itemize}
     \item \textbf{Funzionalità principali}: La pagina presenta dettagli completi del progetto, inclusi nome, data di creazione e tutti i capitoli che lo compongono.\\
-    È presente un pulsante che consente di visualizzare il PDF generato direttamente all'interno di un visualizzatore integrato oppure di scaricarlo per un utilizzo futuro.\\
+    È possibile visualizzare il PDF generato direttamente all'interno di un visualizzatore integrato oppure di scaricarlo per un utilizzo futuro.\\
     Inoltre, la pagina permette di andare a rigenerare il progetto nella sua totalità o in parte;
     \item \textbf{Interazione con il \gls{backend}}: All'apertura della pagina, una chiamata \gls{api} \textit{GET} recupera tutte le versioni del progetto.\\
     Il PDF, generato precedentemente nel \gls{backend}, è reso disponibile tramite un \textit{URL} fornito da \textit{AWS S3}, garantendo sicurezza e velocità di accesso. 
