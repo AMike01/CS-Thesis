@@ -17,7 +17,7 @@ Per il progetto ho adottato un'architettura a livelli, nota come \textit{Three-T
 
 \subsubsection{Motivazione della scelta}
 
-\noindent L'architettura a livelli è stata scelta per garantire una chiara separazione delle responsabilità tra i diversi componenti del sistema, facilitando così la manutenzione e l'evoluzione del progetto.\\
+\noindent Ho scelto l'architettura a livelli una chiara separazione delle responsabilità tra i diversi componenti del sistema, facilitando così la manutenzione e l'evoluzione del progetto.\\
 Inoltre, l'uso di tre livelli distinti permette di sostituire o aggiornare un livello senza influenzare gli altri, offrendo un'elevata flessibilità.
 
 \subsubsection{Vantaggi}
@@ -37,7 +37,7 @@ Inoltre, l'uso di tre livelli distinti permette di sostituire o aggiornare un li
 
 \subsubsection{Comunicazione tra i livelli}
 
-\noindent La comunicazione tra i livelli è implementata tramite protocolli standard e strumenti specifici:
+\noindent Ho implementato la comunicazione tra i livelli tramite protocolli standard e strumenti specifici:
 \begin{itemize}
     \item Tra il \textit{Presentation Tier} e il \textit{Logic Tier}, la comunicazione avviene tramite \gls{api-restful}, che permettono lo scambio di dati in formato \textit{JSON};
     \item Tra il \textit{Logic Tier} e il \textit{Data Tier}, è stato utilizzato l'\gls{odm} \textit{Mongoose}, che facilita l'interazione con \textit{MongoDB}, permettendo di definire e gestire modelli di dati in modo efficiente.

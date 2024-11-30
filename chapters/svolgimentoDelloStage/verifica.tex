@@ -31,16 +31,16 @@ Per questa attività ho utilizzato strumenti consolidati come \textit{Prettier} 
 \label{subsec:analisi-dinamica}
 
 Ho effettuato analisi dinamica per verificare il corretto funzionamento delle diverse componenti del sistema, con un particolare focus sul \gls{backend}, considerato il cuore del progetto, rispetto al \gls{frontend}, il cui \textit{testing} è stato affrontato solo in un secondo momento. \\
-Le attività di \textit{testing} si sono concentrate prevalentemente sui \textit{test} unitari, con l'aggiunta di alcuni \textit{test} di performance per la generazione dei progetti.\\
 
-\subsubsection{Testing del \gls{backend}}  
+\pagebreak
+\subsubsection{Testing del backend}
 
 Ho sviluppato \textit{test} unitari per tutti i \textit{controller} ed i \textit{service}, assicurando la copertura di tutte le principali funzionalità del sistema.\\
 
-\noindent I \textit{test} sono stati eseguiti durante tutto il ciclo di vita del \textit{software}, seguendo il modello a \textit{V} (visibile in {\hyperref[fig:v-model]{Figura 3.8}}), che prevede l’integrazione di attività di \textit{testing} in ogni fase di sviluppo.\\
-    Man mano che venivano creati gli \textit{endpoint}, ho sviluppato i relativi \textit{test} per verificarne immediatamente la correttezza.\\
+\noindent Ho implementato i \textit{test} durante tutto il ciclo di vita del \textit{software}, seguendo il modello a \textit{V} (visibile in {\hyperref[fig:v-model]{Figura 3.8}}), che prevede l’integrazione di attività di \textit{testing} in ogni fase di sviluppo.\\
+    Man mano che creavo gli \textit{endpoint}, ho sviluppato i relativi \textit{test} per verificarne immediatamente la correttezza.\\
 
-\noindent Questo approccio iterativo ha garantito che ogni componente fosse testato e verificato fin dalla sua creazione, riducendo al minimo la possibilità di accumulare errori e semplificando il \textit{debug} nelle fasi successive.\\
+\noindent Questo approccio iterativo mi ha garantito che ogni componente fosse testato e verificato fin dalla sua creazione, riducendo al minimo la possibilità di accumulare errori e semplificando il \textit{debug} nelle fasi successive.\\
 
 \begin{figure}[H]
     \centering
@@ -52,4 +52,4 @@ Ho sviluppato \textit{test} unitari per tutti i \textit{controller} ed i \textit
 
 \subsubsection{Test di performance}  
 Ho effettuato alcuni \textit{test} di performance specifici per il \gls{backend}, con un focus particolare sulla generazione dei progetti.\\
-Questi \textit{test} hanno permesso di misurare i tempi di risposta e verificare che il sistema fosse in grado di gestire la generazione di progetti in modo efficiente, anche in scenari di carico moderato.\\
+Questi \textit{test} mi hanno permesso di misurare i tempi di risposta e verificare che il sistema fosse in grado di gestire la generazione di progetti in modo efficiente, anche in scenari di carico moderato.\\

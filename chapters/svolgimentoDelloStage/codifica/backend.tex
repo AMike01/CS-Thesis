@@ -27,18 +27,18 @@ La struttura della \textit{repository} \gls{backend} è la seguente:
 
 \subsubsection{\textit{Endpoints} delle \gls{api}}
 
-Il sistema implementa diversi \textit{endpoints} per gestire le operazioni richieste dal \gls{frontend}.\\
-Di seguito vengono approfonditi gli \textit{endpoints} che implementano le funzionalità più avanzate, offrendo interazioni significative tra il \gls{frontend}, il \gls{backend} e i servizi esterni.
+Sono andato ad implementare il \gls{backend} tramite l'utilizzo di diversi \textit{endpoints}, che permettono la gestione delle richieste dal \gls{frontend}.\\
+Di seguito approfondisco gli \textit{endpoints} che implementano le funzionalità più avanzate, offrendo interazioni significative tra il \gls{frontend}, il \gls{backend} e i servizi esterni.
 
 \subsection*{\texttt{/aws-bedrock}}
-L’\textit{endpoint} \texttt{/aws-bedrock} è progettato per gestire la generazione automatica dei progetti sfruttando le capacità di \textit{AWS Bedrock}.\\
+Ho implementato l’\textit{endpoint} \texttt{/aws-bedrock} per gestire la generazione automatica dei progetti sfruttando le capacità di \textit{AWS Bedrock}.\\
 La sua funzione principale è quella di orchestrare la comunicazione tra il sistema e un modello di linguaggio (\gls{llm}) avanzato, consentendo la creazione di progetti dettagliati.\\
 
 \noindent Per garantire consistenza e affidabilità nel risultato, ho utilizzato la libreria \textit{LangChain}, un \textit{framework} che supporta la definizione di output strutturati direttamente dall’\gls{llm},
 permettendo di definire uno schema di \textit{output} prevedibile.\\
 
 \pagebreak
-\noindent La {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.2}} mostra la dichiarazione della \gls{llm} e la funzione di generazione dei progetti implementata nel \textit{service}, che si occupa di invocare il modello di linguaggio e restituire il risultato al \gls{frontend}.
+\noindent La {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.2}} mostra la dichiarazione della \gls{llm} e la funzione di generazione dei progetti implementata nel \textit{service}, che si occupa di invocare il modello di linguaggio e di restituire il risultato al \gls{frontend}.
 
 \begin{lstlisting}[caption={Dichiarazione \gls{llm} e sua invocazione}, label={lst:funzione-generazione-progetto}]
 private readonly llm: ChatBedrockConverse;
@@ -82,7 +82,8 @@ private readonly llm: ChatBedrockConverse;
 \end{lstlisting}
 \pagebreak
 \subsection*{\texttt{/pdf}}
-L’\textit{endpoint} \texttt{/pdf} è responsabile della generazione dei documenti PDF e del loro salvataggio su \textit{AWS S3} a partire dai progetti creati; esso svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
+Ho creato l'\textit{endpoint} \texttt{/pdf} per gestire la generazione dei documenti PDF ed il loro salvataggio su \textit{AWS S3} a partire dai progetti creati.\\
+Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
 Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco.\\ 
 
 \noindent La {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.3}} riporta la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF generato su \textit{AWS S3}.
