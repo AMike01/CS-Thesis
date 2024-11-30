@@ -20,11 +20,10 @@ Dopo una serie di valutazioni, discussioni con il \textit{tutor} aziendale e app
 \noindent La scelta di \textit{Claude 3.5 Sonnet} è stata motivata principalmente dalla sua capacità di generare testi molto lunghi, una caratteristica fondamentale per il progetto, che prevedeva la generazione di progetti molto dettagliati.\\
 A differenza di altri modelli, che possono essere più efficienti nel generare testi brevi e concisi, \textit{Claude 3.5 Sonnet} ha dimostrato di essere in grado di mantenere una coerenza narrativa e una logica fluida anche su testi di grande lunghezza.\\
 
-\noindent Tuttavia, uno dei principali svantaggi in merito alla scelta di \textit{Claude 3.5 Sonnet} è la latenza maggiore che esso comporta, rispetto ad altri modelli più leggeri.\\
-Nonostante la maggiore latenza, la decisione di adottarlo è stata giustificata dalla necessità di ottenere testi più lunghi e strutturati, caratteristica che non poteva essere completamente soddisfatta da altri modelli in tempi più rapidi.\\
-Inoltre, la latenza non ha rappresentato un problema significativo, poiché la generazione dei contenuti è gestita centralmente nel \gls{backend}, dove la latenza può essere gestita in modo più efficiente e non impatta l'esperienza utente finale in modo negativo.\\
+\noindent Uno dei principali svantaggi in merito alla scelta di \textit{Claude 3.5 Sonnet} è la latenza maggiore che esso comporta, rispetto ad altri modelli più leggeri,
+tuttavia questao non ha rappresentato un problema significativo, poiché la generazione dei contenuti è gestita centralmente nel \gls{backend}, dove la latenza può essere gestita in modo più efficiente e non impatta l'esperienza utente finale in modo negativo.\\
 
-\noindent La {\hyperref[fig:sonnet-comparison]{Figura 3.7}} mostra la tabella comparativa contenente l'aggiornamento di \textit{Claude 3.5 Sonnet} rispetto ad altri modelli \gls{llm}.
+\noindent La {\hyperref[fig:sonnet-comparison]{Figura 3.7}} riporta la tabella comparativa contenente l'aggiornamento di \textit{Claude 3.5 Sonnet} rispetto ad altri modelli \gls{llm}.
 
 \begin{figure}[H]
     \centering
@@ -33,10 +32,3 @@ Inoltre, la latenza non ha rappresentato un problema significativo, poiché la g
     \cite{site:updated-sonnet}
     \label{fig:sonnet-comparison}
 \end{figure}
-
-
-
-\subsubsection{Considerazioni Finali sulla Scelta del Modello}
-
-La scelta di \textit{Claude 3.5 Sonnet} si è rivelata la più adatta per le necessità del progetto, grazie alla sua capacità di generare testi lunghi e ben strutturati, alla sua compatibilità con \textit{AWS Bedrock} e alla possibilità di ottenere un \textit{output} strutturato, fondamentale per mantenere la coerenza tra i vari documenti generati. \\
-Sebbene la latenza maggiore rispetto ad altri modelli sia stata un fattore da considerare, l'adozione di \textit{Claude 3.5 Sonnet} ha permesso di ottenere un compromesso ottimale tra qualità dei contenuti generati e prestazioni generali del sistema.

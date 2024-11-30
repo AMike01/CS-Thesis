@@ -32,7 +32,7 @@ Questa pagina consente agli utenti di creare nuovi progetti fornendo tutte le in
     \item \textbf{Interazione con il \gls{backend}}: Una volta completata la compilazione del \textit{form}, i dati vengono inviati al \gls{backend} tramite una chiamata \gls{api} \textit{POST} che si occupa della generazione del progetto.\\
 \end{itemize}
 
-\subsubsection{Pagina di Dettaglio Progetto}
+\subsubsection{Pagina di dettaglio progetto}
 Questa pagina fornisce una vista approfondita di un singolo progetto, mostrando tutte le informazioni associate e consentendo di accedere al documento PDF generato.
 \begin{itemize}
     \item \textbf{Funzionalità principali}: La pagina presenta dettagli completi del progetto, inclusi nome, data di creazione e tutti i capitoli che lo compongono.\\
@@ -41,8 +41,8 @@ Questa pagina fornisce una vista approfondita di un singolo progetto, mostrando 
     \item \textbf{Interazione con il \gls{backend}}: All'apertura della pagina, una chiamata \gls{api} \textit{GET} recupera tutte le versioni del progetto.\\
     Il PDF, generato precedentemente nel \gls{backend}, è reso disponibile tramite un \textit{URL} fornito da \textit{AWS S3}, garantendo sicurezza e velocità di accesso. 
 \end{itemize}
-
-\noindent La {\hyperref[lst:single-project-page]{\textit{Listing} 3.2}} è mostra la funzione di \textit{retrieve} di tutte le versioni del progetto, si noti la riga \texttt{projectsData[projectsData.length - 1]}, questa va ad impostare come progetto selezionato l'ultima versione disponibile.
+\pagebreak
+\noindent La {\hyperref[lst:single-project-page]{\textit{Listing} 3.1}} mostra la funzione di \textit{retrieve} di tutte le versioni del progetto, si noti la riga \texttt{projectsData[projectsData.length - 1]}, questa va ad impostare come progetto selezionato l'ultima versione disponibile.
 
 \begin{lstlisting}[caption={Funzione di \textit{retrieve} di tutte le versioni dei progetti}, label={lst:single-project-page}]
   const fetchProject = async () => {
