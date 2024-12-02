@@ -1,9 +1,7 @@
 \subsection{Architettura del sistema}
 \label{subsec:architettura}
 
-Per il progetto ho adottato un'architettura a livelli, nota come \textit{Three-Tier Architecture}, una scelta motivata dalla necessità di ottenere un'alta modularità, scalabilità e manutenibilità del sistema.\\
-
-\noindent Questa architettura è composta da tre livelli distinti:
+Per il progetto ho adottato un'architettura a livelli, nota come \textit{Three-Tier Architecture}, questa architettura è composta da tre livelli distinti:
 
 \begin{itemize}
     \item \textbf{\textit{Presentation Tier}}: rappresenta il livello di interfaccia utente (\gls{ui}) del sistema,
@@ -17,9 +15,11 @@ Per il progetto ho adottato un'architettura a livelli, nota come \textit{Three-T
 
 \subsubsection{Motivazione della scelta}
 
-\noindent Ho scelto l'architettura a livelli una chiara perché permette la separazione delle responsabilità tra i diversi componenti del sistema, facilitando così la manutenzione e l'evoluzione del progetto.\\
-Inoltre, l'uso di tre livelli distinti permette di sostituire o aggiornare un livello senza influenzare gli altri, offrendo un'elevata flessibilità.
+\noindent Ho scelto di adottare un'architettura a livelli in quanto rappresenta una soluzione versatile e strutturata, ideale per gestire la complessità dei sistemi moderni. \\
+Questa scelta favorisce un'organizzazione chiara e coerente, permettendo di ottimizzare lo sviluppo e la gestione del progetto nel tempo.
 
+\noindent Di seguito, analizzo i principali vantaggi e svantaggi di questa architettura, evidenziandone l'impatto sull'efficienza e sulla scalabilità del sistema.
+\pagebreak
 \subsubsection{Vantaggi}
 \begin{itemize}
     \item \textbf{Modularità}: Ogni livello è indipendente e può essere sviluppato, testato e manutenuto separatamente;
@@ -43,7 +43,7 @@ Inoltre, l'uso di tre livelli distinti permette di sostituire o aggiornare un li
     \item Tra il \textit{Logic Tier} e il \textit{Data Tier}, è stato utilizzato l'\gls{odm} \textit{Mongoose}, che facilita l'interazione con \textit{MongoDB}, permettendo di definire e gestire modelli di dati in modo efficiente.
 \end{itemize}
 
-\subsection*{Architettura frontend}
+\subsection*{Architettura \gls{frontend}}
 
 L'architettura di \textit{ReactJS} si basa sulla creazione di interfacce utente modulari e riutilizzabili, utilizzando il concetto di \textit{components}. \\
 Un'applicazione sviluppata con \textit{ReactJS} segue un'architettura dichiarativa, in cui lo stato e il comportamento dell'interfaccia utente sono gestiti attraverso i \textit{components} e gli \textit{hooks}, garantendo flessibilità e manutenibilità del codice.
@@ -66,7 +66,7 @@ Gli \textit{hooks} sono una funzionalità introdotta in \textit{ReactJS} per ges
     \item \textbf{\textit{useContext}}: Fornisce un modo per condividere dati tra i \textit{componenti} senza dover passare le \textit{props} manualmente attraverso tutti i livelli della gerarchia.
 \end{itemize}
 
-\subsection*{\textit{Design pattern} frontend}
+\subsection*{\textit{Design pattern} \gls{frontend}}
 
 \textit{ReactJS} supporta diversi \textit{design pattern} che contribuiscono a migliorare l'organizzazione e la scalabilità delle applicazioni. \\
 Quelli che ho utilizzato sono:
@@ -76,7 +76,7 @@ Quelli che ho utilizzato sono:
 \end{itemize}
 
 
-\subsection*{Architettura backend}
+\subsection*{Architettura \gls{backend}}
 \textit{NestJS} è un \textit{framework} per lo sviluppo di applicazioni \gls{backend} che segue una struttura modulare ispirata ai principi di \textit{Angular}. \\
 Questo approccio facilita la creazione di applicazioni scalabili, manutenibili e testabili.\\
 
@@ -103,7 +103,7 @@ Questi sono decorati con l'annotazione \texttt{@Injectable()} per permettere la 
 In \textit{NestJS}, la \gls{di} viene utilizzata per iniettare i \textit{service} nei \textit{controller} e viceversa, semplificando la gestione delle dipendenze e migliorando la testabilità del codice. \\
 Questo processo avviene automaticamente tramite il sistema di \gls{di} integrato nel \textit{framework}.
 
-\subsection*{\textit{Design pattern} backend}
+\subsection*{\textit{Design pattern} \gls{backend}}
 
 \textit{NestJS} si ispira a diversi \textit{design pattern} che migliorano la modularità, la testabilità e la manutenibilità dell'applicazione.\\
 
