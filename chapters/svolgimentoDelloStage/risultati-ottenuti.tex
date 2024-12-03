@@ -1,19 +1,45 @@
-\section{Risultati ottenuti}
+\pagebreak \section{Risultati ottenuti}
 \label{sez:risultati-ottenuti}
 
-
-\subsection{Prodotto realizzato}
-\label{subsec:prodotto-realizzato}
-
-Screenshots del prodotto realizzato, spiegazione delle funzionalità implementate viste dal lato utente (in 'black-box').
-
+\input{chapters/svolgimentoDelloStage/risultatiOttenuti/prodotto-realizzato.tex}
+\pagebreak
 \subsection{Copertura dei requisiti}
 \label{subsec:copertura-requisiti}
 
-Descrizione della copertura dei requisiti individuati durante l'analisi dei requisiti, quali sono stati soddisfatti, quali no, ecc.
+Ho soddisfatto tutti i requisiti funzionali e non funzionali, ad eccezione di un requisito funzionale desiderabile e di un requisito non funzionale, che discuto qui sotto.\\
+Ho implementato e testato ogni funzionalità prevista, rispettando pienamente l'analisi dei requisiti iniziale.
 
+\subsubsection{Requisito RNFO-1: Tempi di generazione inferiori a 30 Secondi}
+\noindent Non ho soddisfatto il requisito RNFO-1, che prevedeva tempi di generazione dei progetti inferiori a 30 secondi,
+infatti l'\gls{llm} che ho scelto per la generazione dei progetti (\textit{Claude 3.5 Sonnet}), impiega in media circa 1 minuto e 20 secondi per completare il processo.\\
+
+\noindent Tuttavia, insieme al \textit{tutor} aziendale, ho concordato che tale tempistica fosse accettabile, considerando l'elevata qualità e il livello di dettaglio forniti dal modello.\\
+In futuro, un'ottimizzazione delle prestazioni potrebbe ridurre ulteriormente questi tempi.
 \subsection{Materiali prodotti}
 \label{subsec:materiali-prodotti}
 
-Descrizione dei materiali prodotti durante il progetto, come il numero di linee di codice, numero di test implementati, il numero di documenti, il numero di file, ecc.\\
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{gray!15}{white} % Righe alternate: grigio chiaro e bianco
+    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+        \hline
+        \rowcolor{green!30} % Colore dell'intestazione: verde chiaro
+        \textbf{Metrica} & \textbf{Quantità} \\
+        \hline
+        \textbf{Documenti} & 2 \\
+        \hline
+        \textbf{Componenti \textit{React}} & 8 \\
+        \hline
+        \textbf{\gls{api}} & 11 \\
+        \hline
+        \textbf{Linee di codice} & 11.941 \\
+        \hline
+        \textbf{Numero di \textit{file}} & 113 \\
+        \hline
+        \textbf{\textit{Test} implementati} & 102 \\
+        \hline
+    \end{tabularx}
+    \caption{Tabella dei materiali prodotti}
+    \label{tab:materiali-prodotti}
+\end{table}
 

@@ -1,0 +1,122 @@
+\subsection{\gls{backend}}
+\label{sez:backend}
+
+La struttura della \textit{repository} \gls{backend} è la seguente:
+
+\begin{itemize}
+    \item \textbf{\textit{src}}: Contiene varie cartelle organizzate per funzionalità, tra cui:
+    \begin{itemize}
+        \item \textbf{\textit{auth}}: Contiene i \textit{middleware} per l'autenticazione delle \gls{api};
+        \item \textbf{\textit{aws-bedrock}}: Contiene la logica della generazione dei progetti;
+        \item \textbf{\textit{pdf}}: Contiene la logica per la generazione e salvataggio su \textit{AWS S3} dei documenti PDF;
+        \item \textbf{\textit{utils}}: Contiene tutti i \textit{mock} utili per il \textit{testing} o funzioni di supporto globale.
+    \end{itemize}
+    \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
+    \item \textbf{\textit{DockerFile}}: Contiene il file \textit{Docker} per la creazione del \gls{container} per \textit{MongoDB};
+\end{itemize}
+
+\noindent Per ogni cartella all'interno di \textit{src} (ad esclusione delle cartelle \textbf{\textit{auth}} e \textbf{\textit{utils}}), si ha una struttura comune che include:
+\begin{itemize} 
+    \item una cartella \textit{dto} contenente i \gls{dtog} relativi alla funzionalità;
+    \item una cartella \textit{schemas} contenente lo schema \gls{odmg} relativo all'entità gestita;
+    \item un \textit{controller} per la gestione delle richieste \gls{http};
+    \item un \textit{module} per l'iniezione delle dipendenze;
+    \item un \textit{service} per la logica di \textit{business};
+    \item i \textit{test} dei \textit{controller} e dei \textit{service}.
+\end{itemize}
+
+\subsubsection{\textit{Endpoints} delle \gls{api}}
+
+\noindent Nel \gls{backend} dell'applicazione, ho progettato e sviluppato un totale di 5 \textit{endpoints}, che complessivamente implementano 11 \gls{api}, ognuna delle quali svolge un ruolo fondamentale nella gestione dei dati e nell'esecuzione delle operazioni richieste dall'applicazione. \\
+
+\noindent Ho implementato questi \textit{endpoints} per garantire una comunicazione fluida e sicura tra il \gls{frontend}, il \gls{backend} ed i servizi esterni, assicurando che ogni componente del sistema possa interagire in modo efficiente.\\
+Inoltre, ho definito 8 \gls{dto}, che sono essenziali per la corretta gestione, validazione e trasmissione dei dati tra le diverse componenti del sistema, permettendo di mantenere l'integrità e la coerenza delle informazioni.\\
+
+\noindent Di seguito, approfondisco gli \textit{endpoints} più rilevanti, focalizzandomi sulle funzionalità avanzate che implementano e analizzando le modalità con cui questi \textit{endpoints} interagiscono con i servizi esterni, garantendo una gestione ottimale delle risorse e una comunicazione efficiente tra le varie parti del sistema. \\
+
+\subsection*{\texttt{/aws-bedrock}}
+Ho implementato l’\textit{endpoint} \texttt{/aws-bedrock} per gestire la generazione automatica dei progetti sfruttando le capacità di \textit{AWS Bedrock}.\\
+La sua funzione principale è quella di orchestrare la comunicazione tra il sistema e un modello di linguaggio (\gls{llm}) avanzato, consentendo la creazione di progetti dettagliati.\\
+
+\noindent Per garantire consistenza e affidabilità nel risultato, ho utilizzato la libreria \textit{LangChain}, un \textit{framework} che supporta la definizione di output strutturati direttamente dall’\gls{llm},
+permettendo di definire uno schema di \textit{output} prevedibile.\\
+
+\pagebreak
+\noindent La {\hyperref[lst:funzione-generazione-progetto]{\textit{Listing} 3.2}} mostra la dichiarazione della \gls{llm} e la funzione di generazione dei progetti implementata nel \textit{service}, che si occupa di invocare il modello di linguaggio e di restituire il risultato al \gls{frontend}.
+
+\begin{lstlisting}[caption={Dichiarazione \gls{llm} e sua invocazione}, label={lst:funzione-generazione-progetto}]
+private readonly llm: ChatBedrockConverse;
+  constructor() {  
+    // declare the LLM
+    this.llm = new ChatBedrockConverse({
+      model: "anthropic.claude-3-5-sonnet-20241022-v1:5",
+      temperature: 0.3,
+      topP: 0.9,
+      maxTokens: 4096,
+      region: "eu-central-1",
+      // AWS credentials
+      credentials: fromIni({ profile: "dev" }), 
+    });
+  }
+  async generateProject(
+    prompt: string,
+    promptId: string,
+    projectId: string
+  ): Promise<CreateProjectDTO> {
+
+    try {
+      // Define the output schema
+      const structuredLlm = this.llm.withStructuredOutput(ProjectSchema); 
+      // Invoke the LLM
+      const response = await structuredLlm.invoke(prompt); 
+      const result : CreateProjectDTO = response;
+
+      // Assign the promptId
+      result.promptId = promptId; 
+      // Assign the projectId
+      result.projectId = projectId; 
+
+      return result;
+    } catch (error) {
+      throw new Error(
+        `Failed to generate project with AWS Bedrock: ${error.message}`
+      );
+    }
+  }
+\end{lstlisting}
+\pagebreak
+\subsection*{\texttt{/pdf}}
+Ho creato l'\textit{endpoint} \texttt{/pdf} per gestire la generazione dei documenti PDF ed il loro salvataggio su \textit{AWS S3} a partire dai progetti creati.\\
+Questo \textit{endpoint} svolge un ruolo fondamentale nel flusso di lavoro complessivo, poiché consente agli utenti di ottenere una rappresentazione visiva e condivisibile dei progetti generati.\\
+Una volta creato, il PDF viene caricato su un \textit{bucket} \textit{AWS S3}, assicurandone la memorizzazione a lungo termine e l’accessibilità tramite un \textit{URL} univoco.\\ 
+
+\noindent La {\hyperref[lst:funzione-generazione-pdf]{\textit{Listing} 3.3}} riporta la funzione di generazione del PDF, si noti la popolazione del template \gls{html} con i dati del progetto e il salvataggio del PDF generato su \textit{AWS S3}.
+\begin{lstlisting}[caption={Funzione di generazione del PDF, con salvataggio su \textit{AWS S3}}, label={lst:funzione-generazione-pdf}]
+async generatePdf(user: User, project: Project): Promise<string> {
+    // Populate the HTML template    
+    const content = await this.populateTemplate(project);  
+    // Get the browser instance
+    const browser: Browser = await this.getBrowser(); 
+
+    const page: Page = await browser.newPage();
+    // Set the content of the page
+    await page.setContent(content); 
+
+    try {
+      // Generate the PDF
+      const pdfBuffer: Uint8Array = await page.pdf({
+        format: "A4",
+        printBackground: true,
+      }); 
+      // Save the PDF on AWS S3
+      this.savePdf(user, pdfBuffer, project.projectId, project.projectName, project.version);  
+      // Return the signed URL to the frontend
+      return this.getSignedUrl(user, project.projectId, project.projectName, project.version);
+    } catch (error) {
+      throw new Error("Failed to generate PDF");
+    } finally {
+      await page.close();
+      await this.closeBrowser();
+    }
+  }
+\end{lstlisting}

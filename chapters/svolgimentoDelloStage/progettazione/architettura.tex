@@ -1,0 +1,119 @@
+\subsection{Architettura del sistema}
+\label{subsec:architettura}
+
+Per il progetto ho adottato un'architettura a livelli, nota come \textit{Three-Tier Architecture}, questa architettura è composta da tre livelli distinti:
+
+\begin{itemize}
+    \item \textbf{\textit{Presentation Tier}}: rappresenta il livello di interfaccia utente (\gls{ui}) del sistema,
+    che si occupa di ricevere \textit{input} dall'utente e di visualizzare i risultati forniti dal livello logico;
+    
+    \item \textbf{\textit{Logic Tier}}: o livello logico, è il cuore del sistema,
+    che si occupa di elaborare i dati, applicare la logica di \textit{business} e gestire le richieste provenienti dal \textit{Presentation Tier};
+    
+    \item \textbf{\textit{Data Tier}}: gestisce la persistenza dei dati del sistema, garantendo la loro memorizzazione, recupero e integrità.
+\end{itemize}
+
+\subsubsection{Motivazione della scelta}
+
+\noindent Ho scelto di adottare un'architettura a livelli in quanto essa rappresenta una soluzione versatile e strutturata, ideale per gestire la complessità dei sistemi moderni. \\
+Questa scelta favorisce un'organizzazione chiara e coerente, permettendo di ottimizzare lo sviluppo e la gestione del progetto nel tempo.
+
+\noindent Di seguito, analizzo i principali vantaggi e svantaggi di questa architettura, evidenziandone l'impatto sull'efficienza e sulla scalabilità del sistema.
+\pagebreak
+\subsubsection{Vantaggi}
+\begin{itemize}
+    \item \textbf{Modularità}: Ogni livello è indipendente e può essere sviluppato, testato e manutenuto separatamente;
+    \item \textbf{Scalabilità}: È possibile scalare ogni livello in modo indipendente, ottimizzando le risorse in base alle esigenze;
+    \item \textbf{Manutenibilità}: La separazione delle responsabilità semplifica la risoluzione dei problemi e l'implementazione di nuove funzionalità;
+    \item \textbf{Riutilizzabilità}: I moduli di ogni livello possono essere riutilizzati in altri progetti con minime modifiche.
+\end{itemize}
+
+\subsubsection{Svantaggi}
+\begin{itemize}
+    \item \textbf{Maggiore complessità}: L'implementazione e il coordinamento di più livelli richiedono un maggiore sforzo di progettazione;
+    \item \textbf{\textit{Overhead} di comunicazione}: La comunicazione tra i livelli può introdurre un'inevitabile latenza;
+    \item \textbf{Dipendenze tecnologiche}: Ogni livello richiede competenze specifiche nelle tecnologie utilizzate.
+\end{itemize}
+
+\subsubsection{Comunicazione tra i livelli}
+
+\noindent Ho implementato la comunicazione tra i livelli tramite protocolli standard e strumenti specifici:
+\begin{itemize}
+    \item Tra il \textit{Presentation Tier} e il \textit{Logic Tier}, la comunicazione avviene tramite \gls{api-restful}, che permettono lo scambio di dati in formato \textit{JSON};
+    \item Tra il \textit{Logic Tier} e il \textit{Data Tier}, è stato utilizzato l'\gls{odm} \textit{Mongoose}, che facilita l'interazione con \textit{MongoDB}, permettendo di definire e gestire modelli di dati in modo efficiente.
+\end{itemize}
+
+\subsection*{Architettura \gls{frontend}}
+
+L'architettura di \textit{ReactJS} si basa sulla creazione di interfacce utente modulari e riutilizzabili, utilizzando il concetto di \textit{components}. \\
+Un'applicazione sviluppata con \textit{ReactJS} segue un'architettura dichiarativa, in cui lo stato e il comportamento dell'interfaccia utente sono gestiti attraverso i \textit{components} e gli \textit{hooks}, garantendo flessibilità e manutenibilità del codice.
+
+\subsubsection{\textit{Components}}
+
+I \textit{components} sono i mattoni fondamentali di un'applicazione \textit{ReactJS}.\\
+Ogni \textit{component} rappresenta una porzione dell'interfaccia utente ed è definito come una funzione od una classe in \textit{JavaScript}.\\
+Questi componenti possono essere combinati per creare strutture più complesse.\\
+Ogni \textit{componente} può gestire il proprio stato locale (\textit{state}) e ricevere dati attraverso le \textit{props} passate dal \textit{parent component}. \\
+
+\subsubsection{\textit{Hooks}}
+
+Gli \textit{hooks} sono una funzionalità introdotta in \textit{ReactJS} per gestire lo stato e gli effetti collaterali nei \textit{functional components}, eliminando la necessità di utilizzare le classi.\\
+
+\noindent Gli \textit{hooks} che ho utilizzato includono:
+\begin{itemize}
+    \item \textbf{\textit{useState}}: Permette di gestire lo stato locale di un \textit{componente};
+    \item \textbf{\textit{useEffect}}: Consente di gestire gli effetti collaterali, come chiamate a \gls{api} o l'aggiornamento del \textit{DOM};
+    \item \textbf{\textit{useContext}}: Fornisce un modo per condividere dati tra i \textit{componenti} senza dover passare le \textit{props} manualmente attraverso tutti i livelli della gerarchia.
+\end{itemize}
+
+\subsection*{\textit{Design pattern} \gls{frontend}}
+
+\textit{ReactJS} supporta diversi \textit{design pattern} che contribuiscono a migliorare l'organizzazione e la scalabilità delle applicazioni. \\
+Quelli che ho utilizzato sono:
+\begin{itemize}
+    \item \textbf{\textit{Presentational and Container Components}}: Divide i \textit{componenti} in \textit{presentational components}, responsabili esclusivamente della visualizzazione, e \textit{container components}, responsabili della logica applicativa e della gestione dello stato;
+    \item \textbf{\textit{Custom Hooks}}: Permettono di estrarre e riutilizzare logica complessa basata sugli \textit{hooks} in funzioni personalizzate.
+\end{itemize}
+
+
+\subsection*{Architettura \gls{backend}}
+\textit{NestJS} è un \textit{framework} per lo sviluppo di applicazioni \gls{backend} che segue una struttura modulare ispirata ai principi di \textit{Angular}. \\
+Questo approccio facilita la creazione di applicazioni scalabili, manutenibili e testabili.\\
+
+\noindent La principale caratteristica architetturale di \textit{NestJS} è la sua organizzazione in moduli. \\
+La struttura di base di un'applicazione \textit{NestJS} è costituita da tre componenti principali: \textit{module}, \textit{controller} e \textit{service}. 
+
+\subsubsection{\textit{Modules}}
+I \textit{module} sono un insieme di componenti (\textit{controller}, \textit{service}, \textit{provider}) che sono raggruppati insieme per gestire una parte specifica dell'applicazione.\\
+Un modulo in \textit{NestJS} consente di organizzare l'applicazione in sezioni logicamente separate, facilitando la gestione del codice e la sua estendibilità.
+
+\subsubsection{\textit{Controllers}}
+I \textit{controller} sono responsabili della gestione delle richieste \gls{http}.\\
+In particolare, si occupano di ricevere le richieste in entrata, chiamare la logica di \textit{business} appropriata e restituire la risposta al \textit{client}.\\
+I \textit{controller} in \textit{NestJS} sono decorati con annotazioni specifiche, come \texttt{@Get}, \texttt{@Post}, per associare i metodi ai rispettivi \textit{endpoint}.\\
+Ogni \textit{controller} è specifico per una risorsa dell'applicazione e funge da punto di ingresso per le richieste.
+
+\subsubsection{\textit{Services}}
+I \textit{service} contengono la logica di \textit{business} dell'applicazione.\\
+Si occupano di interagire con i \textit{database} o con delle \gls{api} esterne.\\
+I \textit{service} sono utilizzati dai \textit{controller} per implementare il comportamento desiderato. \\
+Questi sono decorati con l'annotazione \texttt{@Injectable()} per permettere la loro iniezione tramite il sistema di \gls{di} di \textit{NestJS}.\\
+
+\noindent La \gls{dig} è un pattern di progettazione che consente di iniettare le dipendenze di un componente dall'esterno, anziché farle gestire direttamente dal componente stesso. \\
+In \textit{NestJS}, la \gls{di} viene utilizzata per iniettare i \textit{service} nei \textit{controller} e viceversa, semplificando la gestione delle dipendenze e migliorando la testabilità del codice. \\
+Questo processo avviene automaticamente tramite il sistema di \gls{di} integrato nel \textit{framework}.
+
+\subsection*{\textit{Design pattern} \gls{backend}}
+
+\textit{NestJS} si ispira a diversi \textit{design pattern} che migliorano la modularità, la testabilità e la manutenibilità dell'applicazione.\\
+
+\noindent I due \textit{pattern} che ho utilizzato sono:
+\begin{itemize}
+    \item \textbf{\textit{Singleton Pattern}}: Garantisce che una classe abbia una sola istanza e fornisce un punto di accesso globale a questa istanza.\\
+    In \textit{NestJS}, questo pattern è utilizzato all'interno dei \textit{services};
+    grazie al sistema di \gls{dig} infatti, questi vengono istanziati una sola volta e condivisi in tutta l'applicazione.\\
+    Questo approccio permette di ridurre il carico sulle risorse e assicura che i \textit{service} mantengano uno stato coerente durante l'esecuzione dell'applicazione;
+    \item \textbf{\gls{dto} \textit{Pattern}}: Viene usato per trasferire dati tra sistemi o livelli di un'applicazione.\\
+    In \textit{NestJS}, i \gls{dto} sono oggetti che definiscono la struttura dei dati che vengono inviati da e verso il \textit{controller}.\\
+    I \gls{dto} vengono utilizzati per convalidare, formattare e tipizzare i dati, migliorando la sicurezza e la consistenza dei dati scambiati tra il \textit{client} e il \textit{server}. \\   
+\end{itemize}

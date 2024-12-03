@@ -1,0 +1,29 @@
+\renewcommand{\arraystretch}{1.5} % Increases the row height for better vertical space
+
+\begin{longtable}{|c|>{\centering\arraybackslash}p{0.7\textwidth}|c|} % Adjust the column width with p{0.7\textwidth}
+    \hline
+    \rowcolor{green!30} % Header color: light green
+    \textbf{Codice Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
+    \hline
+    \endfirsthead % Start of the table, first header
+    
+    \hline
+    \rowcolor{green!30} % Header color on subsequent pages
+    \textbf{Codice Requisito} & \textbf{Descrizione} & \textbf{Fonte} \\
+    \hline
+    \endhead % Continuation of the table (repeats on every page)
+    
+    \hline
+    \multicolumn{3}{|c|}{\rowcolor{green!30} \textbf{Requisiti Funzionali}} \\
+    \hline
+    \textbf{RFO-12} & Il sistema deve consentire all'utente di generare un progetto utilizzando un \textit{preset} compilato nella sua interezza & UC11 \\
+    \hline
+    \textbf{RFO-13} & Il sistema deve consentire all'utente di rigenerare un intero progetto, sostituendo completamente il contenuto esistente & UC12 \\
+    \hline
+    \multicolumn{3}{|c|}{\rowcolor{green!30} \textbf{Requisiti Non Funzionali}} \\
+    \hline % Adds a horizontal line after the subtitle
+    \textbf{RNFO-1} & Il sistema deve garantire che i tempi di risposta per la generazione o la rigenerazione di un progetto non superino i 30 secondi in condizioni di carico normale & Interna \\
+    \hline
+    \caption{Tracciamento dei requisiti} % Table caption
+    \label{tab:requisiti-stage} % Label for referencing the table
+\end{longtable}

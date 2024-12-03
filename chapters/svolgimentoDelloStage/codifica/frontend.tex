@@ -1,0 +1,74 @@
+\subsection{\gls{frontend}}
+\label{sez:frontend}
+
+La struttura della \textit{repository} \gls{frontend} è la seguente:
+
+\begin{itemize}
+    \item \textbf{\textit{public}}: Contiene le immagini o loghi utilizzati nell'applicazione;
+    \item \textbf{\textit{src}}: Contiene il codice sorgente dell'applicazione, suddiviso in diverse cartelle:
+    \begin{itemize}
+        \item \textbf{\textit{tests}}: Contiene tutti i \textit{test} unitari creati per verificare il corretto funzionamento delle varie parti del codice;
+        \item \textbf{\textit{components}}: Contiene tutti i componenti creati, che sono le unità riutilizzabili dell'interfaccia utente;
+        \item \textbf{\textit{hooks}}: Contiene i \textit{custom hooks} creati, che sono funzioni speciali di \textit{React} per gestire lo stato e altri effetti collaterali;
+        \item \textbf{\textit{interfaces}}: Contiene le interfacce create, che definiscono i tipi di dati utilizzati nel progetto;
+        \item \textbf{\textit{pages}}: Contiene le pagine vere e proprie, che rappresentano le diverse viste dell'applicazione, come la pagina di \textit{login} e la \textit{dashboard};
+        \item \textbf{\textit{routes}}: Contiene le \textit{routes} del progetto, che definiscono la navigazione tra le diverse pagine e gestiscono l'autorizzazione;
+        \item \textbf{\textit{services}}: Contiene i servizi, in particolare quelli di autenticazione, che gestiscono la logica di \textit{business} e le chiamate \gls{api};
+        \item \textbf{\textit{app.tsx}}: Il \textit{file} principale dell'applicazione che definisce la struttura generale e include i componenti principali;
+        \item \textbf{\textit{main.tsx}}: Il \textit{file} di ingresso dell'applicazione che avvia \textit{React} e renderizza l'applicazione nel \textit{DOM};
+    \end{itemize}
+    \item \textbf{\textit{package.json}}: Contiene le dipendenze del progetto;
+    \item \textbf{\textit{tsconfig.json}}: Contiene le configurazioni del compilatore \textit{TypeScript}.
+\end{itemize}
+
+\noindent Nel \gls{frontend} dell'applicazione ho sviluppato un totale di 8 componenti \textit{React}, 3 \textit{custom hooks} e 5 pagine, ciascuna progettata per offrire un'esperienza utente fluida e intuitiva.\\
+Questi componenti e pagine sono stati realizzati con l'intento di rispondere alle esigenze specifiche degli utenti, garantendo al contempo una comunicazione efficiente con il \gls{backend}. Nel dettaglio, alcune di queste pagine presentano funzionalità avanzate, come la gestione dinamica dei dati, la visualizzazione di informazioni in tempo reale e l'interazione con i servizi del \gls{backend} per l'elaborazione dei dati.\\
+
+\noindent Di seguito, fornisco una descrizione delle pagine più significative dell'applicazione, evidenziando le loro principali funzionalità e le modalità di interazione con il \gls{backend}.
+
+\subsubsection{Pagina di creazione di un progetto}
+Questa pagina consente agli utenti di creare nuovi progetti fornendo tutte le informazioni necessarie o, in alternativa, di salvare una bozza per completare il lavoro successivamente. 
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La pagina include un \textit{form} dinamico che richiede all'utente di selezionare un \textit{preset} e compilarlo per poter andare a generare un progetto.\\ 
+    Durante l'inserimento, viene effettuata una validazione lato \textit{client} per assicurarsi che tutti i campi obbligatori siano compilati e che i dati forniti rispettino i formati richiesti. \\
+    L'utente ha la possibilità di salvare il \textit{preset} come bozza o di richiedere la generazione del progetto;
+    \item \textbf{Interazione con il \gls{backend}}: Una volta completata la compilazione del \textit{form}, i dati vengono inviati al \gls{backend} tramite una chiamata \gls{api} \textit{POST} che si occupa della generazione del progetto.\\
+\end{itemize}
+
+\subsubsection{Pagina di dettaglio progetto}
+Questa pagina fornisce una vista approfondita di un singolo progetto, mostrando tutte le informazioni associate e consentendo di accedere al documento PDF generato.
+\begin{itemize}
+    \item \textbf{Funzionalità principali}: La pagina presenta dettagli completi del progetto, inclusi nome, data di creazione e tutti i capitoli che lo compongono.\\
+    È possibile visualizzare il PDF generato direttamente all'interno di un visualizzatore integrato oppure di scaricarlo per un utilizzo futuro.\\
+    Inoltre, la pagina permette di andare a rigenerare il progetto nella sua totalità o in parte;
+    \item \textbf{Interazione con il \gls{backend}}: All'apertura della pagina, una chiamata \gls{api} \textit{GET} recupera tutte le versioni del progetto.\\
+    Il PDF, generato precedentemente nel \gls{backend}, è reso disponibile tramite un \textit{URL} fornito da \textit{AWS S3}, garantendo sicurezza e velocità di accesso. 
+\end{itemize}
+\pagebreak
+\noindent La {\hyperref[lst:single-project-page]{\textit{Listing} 3.1}} mostra la funzione di \textit{retrieve} di tutte le versioni del progetto, si noti la riga \texttt{projectsData[projectsData.length - 1]}, questa va ad impostare come progetto selezionato l'ultima versione disponibile.
+
+\begin{lstlisting}[caption={Funzione di \textit{retrieve} di tutte le versioni dei progetti}, label={lst:single-project-page}]
+  const fetchProject = async () => {
+    try {
+      const response = await get(`/projects/${id}`);
+      if (response && response.data) {
+        const projectsData = response.data as Project[];
+        setProjects(projectsData);
+        setSelectedProject(
+          projectsData.length > 0
+            ? projectsData[projectsData.length - 1]
+            : null
+        );
+      } else {
+        throw new Error("Invalid response format");
+      }
+      setLoading(false);
+    } catch (err) {
+      showSnackbar({
+        message: "Failed to fetch project details.",
+        severity: "error",
+      });
+      setLoading(false);
+    }
+  };
+  \end{lstlisting}

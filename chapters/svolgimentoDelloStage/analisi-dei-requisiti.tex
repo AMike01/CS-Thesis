@@ -1,35 +1,138 @@
+\pagebreak
 \section{Analisi dei requisiti}
 \label{sez:analisi-dei-requisiti}
+L’analisi dei requisiti rappresenta un'attività cruciale in qualsiasi progetto \textit{software}, poiché consente di definire in modo dettagliato e strutturato ciò che il sistema dovrà realizzare per soddisfare le necessità degli utenti e degli \textit{stakeholder}.\\
+In questo progetto, ho condotto l’analisi seguendo un approccio metodico che si è articolato in diverse fasi.\\
 
-Spiegazione di cos'è l'analisi dei requisiti e di come è stata effettuata.\\
-
-\subsection{\textit{User Story Mapping}}
+\noindent In primo luogo, ho effettuato una mappatura delle \gls{user-stories}, un processo che ha permesso di identificare le funzionalità principali richieste dagli utenti attraverso una rappresentazione visuale e iterativa. \\
+Successivamente, ho individuato i casi d’uso, descrivendo in dettaglio gli scenari di interazione tra gli attori del sistema e le funzionalità del \textit{software}.\\
+Infine, sulla base di queste informazioni, ho creato i \textit{requisiti}, formalizzando in modo chiaro e specifico ciò che il sistema deve implementare, suddividendo i requisiti in funzionali, non funzionali e tecnologici per garantire una visione completa del progetto.
+\subsection{\textit{User story mapping}}
 \label{subsec:user-story-mapping}
 
-\subsubsection{Introduzione}
+\subsection*{Introduzione}
 \label{subsubsec:introduzione}
 
-Introduzione allo User Story Mapping e spiegazione di come è stato utilizzato, per cosa risulta utile, ecc.\\
+Le \gls{user-stories} rappresentano una tecnica fondamentale nel contesto dello sviluppo \textit{Agile}, in particolare all'interno del \textit{framework} \textit{Scrum}. \\
+Questa metodologia mi ha consentito di creare una visione d'insieme delle funzionalità richieste dal sistema, organizzandole in modo strutturato e collaborativo\footcite{site:user-stories}. \\
 
-\subsubsection{\textit{Epic} e \textit{stories} identificate}
+\subsection*{Utilizzo nel contesto \textit{scrum}}\\
+
+\noindent Nel contesto di \textit{Scrum}, le \gls{user-stories} sono utilizzate per:
+
+\begin{itemize}
+    \item \textbf{Comprendere le esigenze degli utenti:} La mappatura aiuta a identificare le principali funzionalità del prodotto dal punto di vista degli utenti finali;
+    \item \textbf{Definire un \textit{backlog} strutturato:} La tecnica consente di creare un \gls{product-backlog} organizzato, ordinando le \gls{user-stories} per priorità e obiettivi di rilascio;
+    \item \textbf{Pianificare gli \gls{sprint}:} La mappa aiuta il \textit{Product Owner} ed il \textit{team} ad individuare le storie da completare in ciascun \gls{sprint}, bilanciando valore e complessità;
+    \item \textbf{Favorire la collaborazione:} La mappa è creata in un incontro collaborativo che coinvolge il \textit{Product Owner}, il \textit{team} di sviluppo e, quando possibile, gli \textit{stakeholder}, per garantire un allineamento sulle priorità.
+\end{itemize}
+
+\pagebreak
+\subsection*{Struttura delle \textit{user stories}}\\
+
+\noindent Ogni \textit{user story} segue una struttura standard che include diversi elementi essenziali:\\
+\begin{itemize}
+
+    \item \textbf{Priorità}, ho classificato ogni storia in base alla sua priorità, indicata con tre livelli derivati dal metodo \textit{MoSCoW}\footcite{site:moscow-method}:
+    \begin{itemize}
+        \item \textbf{M:} \textit{Must have} (essenziale): funzionalità indispensabili per il sistema;
+        \item \textbf{S:} \textit{Should have} (importante): funzionalità utili ma non critiche;
+        \item \textbf{C:} \textit{Could have} (opzionale): funzionalità che aggiungono valore ma possono essere escluse in caso di limitazioni temporali o di risorse.   
+    \end{itemize}
+
+    \item \textbf{Descrizione}, ho descritto ogni storia in modo sintetico attraverso la notazione standard:
+
+    \begin{center}
+        Come [\textit{utente}], voglio [\textit{azione}], affinché [\textit{obiettivo}].
+    \end{center}
+    Ad esempio: "Come cliente, voglio visualizzare il catalogo prodotti, affinché possa scegliere cosa acquistare."\\
+
+    \item \textbf{Criteri di accettazione}, ho definito le condizioni che devono essere soddisfatte affinché le \gls{user-stories} possano essere considerate completate.\\
+    Sono specifiche misurabili che servono come riferimento per i \textit{test} e l’approvazione. \\
+
+    \noindent Ad esempio, per la storia sopra, i criteri di accettazione potrebbero essere:
+
+    \begin{itemize}
+        \item Il catalogo deve mostrare almeno 20 prodotti per pagina;
+        \item Ogni prodotto deve avere nome, immagine e prezzo visibili;
+        \item L’utente deve poter filtrare i prodotti per categoria.
+    \end{itemize}
+
+\end{itemize}
+
+\pagebreak
+\subsection*{\textit{User stories} identificate}
+
+Di seguito le \gls{user-stories} più significative che ho individuato durante l'analisi dei requisiti:
 \label{subsubsec:epic-stories}
 
-Descrizione degli Epic e delle stories identificate durante l'analisi dei requisiti.\\
+\input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/user-story-mapping.tex}
 
 \subsection{Casi d'uso}
 \label{subsec:casi-duso}
 
+I diagrammi dei casi d’uso consentono di descrivere in modo chiaro e strutturato le interazioni tra gli attori e il sistema.\\
+
+\noindent Per la stesura dei casi d’uso, ho adottato una convenzione specifica, organizzata come segue:
+
+\begin{center}
+\textbf{UC[Numero] - Nome del caso d’uso}
+\end{center}
+
+Dove:
+\begin{itemize}
+    \item \textbf{UC}: acronimo di \textit{Use Case};
+    \item \textbf{Numero}: identificatore progressivo del caso d’uso.\\
+    I sottocasi sono rappresentati nella forma [Numero].[SottoNumero].
+\end{itemize}
+
+\noindent Ogni caso d’uso è corredato da una descrizione dettagliata, dalla lista degli attori coinvolti, dalla sua descrizione, dalle precondizioni e dalle postcondizioni necessarie affinché il caso d’uso possa essere eseguito correttamente.\\
+
+\noindent Ho incluso esclusivamente i casi d’uso principali, omettendo quelli banali o secondari per privilegiare chiarezza e rilevanza.\\
+
 \subsubsection{Attori}
 \label{subsubsec:attori}
 
-Descrizione degli attori individuati durante l'analisi dei requisiti.\\
+\input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/attori.tex}
 
+\pagebreak
 \subsubsection{Casi d'uso individuati}
 \label{subsubsec:casi-uso-individuati}
 
-Descrizione dei casi d'uso individuati durante l'analisi dei requisiti.\\
+\input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/casi-uso.tex}
 
 \subsection{Tracciamento dei requisiti}
 \label{subsec:requisiti}
 
-Lista dei requisiti individuati, con spiegazione della notazione utilizzata e classificazione tra requisiti funzionali e non funzionali, obbligatori, desiderabili e facoltativi.\\
+Il tracciamento dei requisiti è un processo fondamentale per garantire che tutte le funzionalità e le caratteristiche desiderate del sistema siano correttamente identificate e documentate. \\
+Per questo progetto, ho derivato i requisiti da due fonti principali: i casi d'uso e le fonti interne al progetto, come documenti tecnici, normative aziendali e linee guida.\\ 
+
+\noindent Ho catalogato e numerato i requisiti funzionali e non funzionali per garantire una chiara tracciabilità durante lo sviluppo del sistema.\\
+Ho inoltre associato ad ogni requisito una priorità che indica l'importanza relativa rispetto alle esigenze del progetto.\\
+
+\noindent La nomenclatura dei requisiti segue il formato descritto di seguito:
+
+\begin{center}
+\textbf{R[Tipologia][Priorità]-[Numero]}
+\end{center}
+
+Dove:
+\begin{itemize}
+    \item \textbf{R}: Acronimo di \textit{Requisito};
+    \item \textbf{Tipologia}: La tipologia del requisito è definita da una delle seguenti lettere:
+        \begin{itemize}
+            \item \textbf{F} (Funzionale): Requisiti relativi alle funzionalità che il sistema deve fornire;
+            \item \textbf{NF} (Non Funzionale): Requisiti che descrivono le qualità del sistema, come le prestazioni, la sicurezza, la scalabilità, ecc.
+        \end{itemize}
+    \item \textbf{Priorità}: La priorità del requisito è indicata con una delle seguenti lettere:
+        \begin{itemize}
+            \item \textbf{O} (Obbligatorio): Il requisito è essenziale per il successo del progetto e deve essere soddisfatto senza eccezioni;
+            \item \textbf{F} (Facoltativo): Il requisito è desiderato, ma non è essenziale per il funzionamento del sistema;
+            \item \textbf{D} (Desiderabile): Il requisito è preferibile ma può essere rinviato o rimosso senza compromettere gravemente il progetto.
+        \end{itemize}
+    \item \textbf{Numero}: Un numero intero progressivo che identifica in modo univoco ogni requisito.
+\end{itemize}
+
+\noindent In tutto ho individuato 19 requisiti funzionali e 3 requisiti non funzionali.\\
+Di seguito mostro i più significativi.
+\input{chapters/svolgimentoDelloStage/analisiDeiRequisiti/tracciamento-requisiti.tex}
